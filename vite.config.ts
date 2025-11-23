@@ -14,7 +14,7 @@ export default defineConfig({
     lib: {
       entry: path.resolve(__dirname, "src/widget.tsx"),
       name: "ReactWidget",
-      fileName: "react-widget-maic",
+      fileName: "react-widget-22",
       formats: ["iife"],
     },
     rollupOptions: {
