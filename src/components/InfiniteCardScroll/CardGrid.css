@@ -1,0 +1,67 @@
+/* CardGrid.css */
+.card-grid-wrapper {
+  width: 100%;
+  padding: 2rem 0;
+  position: relative;
+}
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);   /* mobile */
+  gap: 2rem;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+/* Tablet – 2 columns */
+@media (min-width: 640px) {
+  .card-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Desktop – 3 columns */
+@media (min-width: 1024px) {
+  .card-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Optional nice hover effect for the grid items */
+.card-grid-item {
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card-grid-item:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.card-grid-item:focus-visible {
+  outline: 3px solid #3b82f6;
+  outline-offset: 4px;
+}
+
+
+.agent-detail-wrapper {
+  animation: fadeIn 0.4s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Ensure AgentDetail fills the screen nicely */
+.agent-detail-container {
+  min-height: 100vh;
+  background: #f9fafb;
+}
