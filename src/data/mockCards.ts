@@ -243,6 +243,6 @@ export const mockCards: CardInterface[] = [
     imageUrl: "#FF7043",
     icon: AlertTriangle,
     tags: ["Security", "Safety"],
-    agent_code: "1404f984-c829- wych11-b018-ea863a44d63c",
+    agent_code: "1404f984-c829-4e11-b018-ea863a44d63c",
   },
 ];
