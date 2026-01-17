@@ -85,7 +85,7 @@ function App() {
   };
 
   return (
-    <div className="max-w-6xl mx-auto">
+    <div className="max-w-10xl mx-auto">
       <CardGrid
         cards={mockCards}
         handleStart={handleStart}

@@ -330,11 +330,6 @@ export const CardGrid: React.FC<CardGridProps> = memo(
             {cards.map((card) => renderCard(card, "#FF5722"))}
           </div>
         )}
-
-        {/* Footer */}
-        <div className="page-footer">
-          <p>Powered by Advanced AI Technology</p>
-        </div>
       </div>
     );
   }
