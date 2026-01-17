@@ -451,6 +451,7 @@ const agentDetails = {
       responseTime: "< 5 sec",
       candidatesScreened: "5,600+"
     }
+    
   },
   "Vendor & Supplier Coordination": {
     fullDescription: "Manages vendor communications, purchase orders, delivery tracking, and supplier performance for smooth operations.",
@@ -495,7 +496,29 @@ const agentDetails = {
       responseTime: "< 10 sec",
       incidentsHandled: "890+"
     }
-  }
+  },
+  "gourav": {
+    fullDescription: "Critical emergency response system connecting guests and staff to security, medical, and management teams instantly.",
+    features: [
+      "Emergency keyword detection",
+      "Security team alerting",
+      "Location triangulation",
+      "Protocol guidance",
+      "Incident logging"
+    ],
+    useCases: [
+      "Guest reports suspicious activity",
+      "Medical emergency in room",
+      "Fire or safety concern",
+      "Lost child reporting",
+      "Silent alarm activation"
+    ],
+    stats: {
+      satisfaction: "99%",
+      responseTime: "< 10 sec",
+      incidentsHandled: "890+"
+    }
+  },
 };
 
 export const AgentDetail: React.FC<AgentDetailProps> = ({

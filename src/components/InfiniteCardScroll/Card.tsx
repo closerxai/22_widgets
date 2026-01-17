@@ -34,8 +34,10 @@ export const Card: React.FC<CardProps> = ({
         className="card-icon-wrapper"
         style={{ backgroundColor: card.imageUrl }}
       >
-        <Icon size={28} className="text-white" />
-      </div>
+        {!card.imageAlt ? (<Icon size={32} color="#FFFFFF" />) :<img className="rounded-full h-[100px] w-[100px]" src={card.imageAlt} alt=""/>
+       }
+        
+        </div>
       <div className="card-content">
         <div className="card-header">
           <h3 className="card-title">{card.title}</h3>

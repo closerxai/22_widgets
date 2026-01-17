@@ -25,18 +25,9 @@ import {
 } from "lucide-react";
 
 export const mockCards: CardInterface[] = [
+  
   {
     id: 1,
-    title: "Central Reservations",
-    route: "central-reservations",
-    description: "Booking inquiries, rate checks",
-    imageUrl: "#FF7043",
-    icon: Phone,
-    tags: ["Reservations", "Booking"],
-    agent_code: "b1638df3-d06a-42cf-b1d3-a3191fcc2ad3",
-  },
-  {
-    id: 2,
     title: "Front Office Operations",
     route: "front-office",
     description: "Pre-arrival, check-in coordination",
@@ -44,6 +35,16 @@ export const mockCards: CardInterface[] = [
     icon: CalendarCheck,
     tags: ["Front Desk", "Check-in"],
     agent_code: "d3e90f97-1db9-48b9-9330-06b1c5da0b82",
+  },
+  {
+    id: 2,
+    title: "Central Reservations",
+    route: "central-reservations",
+    description: "Booking inquiries, rate checks",
+    imageUrl: "#FF7043",
+    icon: Phone,
+    tags: ["Reservations", "Booking"],
+    agent_code: "b1638df3-d06a-42cf-b1d3-a3191fcc2ad3",
   },
   {
     id: 3,
@@ -55,7 +56,7 @@ export const mockCards: CardInterface[] = [
     tags: ["Concierge", "Guest Services"],
     agent_code: "b5b84819-3780-48ca-87ac-e137073bbd84",
   },
-  {
+{
     id: 4,
     title: "Housekeeping Coordination",
     route: "housekeeping",
