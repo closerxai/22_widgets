@@ -335,6 +335,29 @@
   }
 }
 
+/* Coming Soon Message */
+.coming-soon-message {
+  background: white;
+  padding: 48px;
+  border-radius: 20px;
+  text-align: center;
+  box-shadow: 0 6px 24px rgba(255, 87, 34, 0.08);
+  border: 1px solid rgba(255, 87, 34, 0.1);
+}
+
+.coming-soon-message h2 {
+  font-size: 24px;
+  font-weight: 700;
+  color: #1A1A1A;
+  margin-bottom: 12px;
+}
+
+.coming-soon-message p {
+  font-size: 16px;
+  color: #666;
+  line-height: 1.6;
+}
+
 /* Mobile Responsiveness */
 @media (max-width: 768px) {
   .agent-detail-content {

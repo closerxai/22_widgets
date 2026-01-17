@@ -11,9 +11,22 @@ interface AgentDetailProps {
   getAgentName: (agentName: string) => void;
 }
 
-const agentDetails = {
+// Complete agent details for all agents
+const agentDetails: Record<string, {
+  fullDescription: string;
+  features: string[];
+  useCases: string[];
+  stats: {
+    satisfaction: string;
+    responseTime: string;
+    metric: string;
+  };
+}> = {
+  // ============================================
+  // PRE-ARRIVAL AGENTS
+  // ============================================
   "Central Reservations": {
-    fullDescription: "AI-powered central reservations agent handling booking inquiries, rate checks, availability searches, and reservation modifications across all channels in real time.",
+    fullDescription: "AI-powered central reservations agent handling booking inquiries, rate checks, availability searches, and reservation modifications across all channels in real time. Seamlessly integrates with your PMS to provide instant, accurate responses.",
     features: [
       "Multi-channel booking sync",
       "Dynamic pricing & rate checks",
@@ -31,33 +44,33 @@ const agentDetails = {
     stats: {
       satisfaction: "96%",
       responseTime: "< 3 sec",
-      bookingsProcessed: "18,500+"
+      metric: "18,500+ Bookings"
     }
   },
-  "Front Office Operations": {
-    fullDescription: "Streamlines pre-arrival communication, check-in coordination, guest profiling, and front desk task automation for seamless guest journeys.",
+  "Upselling & Promotions": {
+    fullDescription: "Intelligent upselling agent that identifies opportunities to enhance guest stays with room upgrades, breakfast packages, transfers, and special add-ons. Uses guest history and preferences to make personalized recommendations.",
     features: [
-      "Pre-arrival messaging",
-      "Digital check-in/out",
-      "Room assignment optimization",
-      "Guest preference tracking",
-      "VIP & special request handling"
+      "Smart upgrade recommendations",
+      "Package bundling optimization",
+      "Personalized offer timing",
+      "Revenue opportunity scoring",
+      "A/B testing for promotions"
     ],
     useCases: [
-      "Send pre-arrival confirmation & upsell offers",
-      "Coordinate early check-in/late check-out",
-      "Assign rooms based on preferences",
-      "Manage upgrades and special requests",
-      "Handle walk-ins professionally"
+      "Offer room upgrades at optimal times",
+      "Bundle breakfast with accommodations",
+      "Promote spa packages to relevant guests",
+      "Suggest airport transfer add-ons",
+      "Create personalized welcome packages"
     ],
     stats: {
-      satisfaction: "95%",
+      satisfaction: "94%",
       responseTime: "< 2 sec",
-      checkInsHandled: "12,000+"
+      metric: "32% Conversion Rate"
     }
   },
-  "Concierge Desk": {
-    fullDescription: "Your 24/7 virtual concierge providing local recommendations, activity bookings, restaurant suggestions, and personalized guest experiences.",
+  "Pre-Check-in Concierge": {
+    fullDescription: "Your 24/7 virtual concierge providing local recommendations, activity bookings, restaurant suggestions, and personalized guest experiences before arrival. Helps guests plan their perfect stay.",
     features: [
       "Local attraction knowledge",
       "Restaurant reservation booking",
@@ -67,19 +80,115 @@ const agentDetails = {
     ],
     useCases: [
       "Recommend hidden gems and experiences",
-      "Book restaurants and activities",
+      "Book restaurants and activities in advance",
       "Arrange airport transfers",
       "Create custom city guides",
-      "Answer 'What's nearby?' questions"
+      "Answer 'What should I do?' questions"
     ],
     stats: {
       satisfaction: "97%",
       responseTime: "< 4 sec",
-      recommendations: "9,800+"
+      metric: "9,800+ Recommendations"
     }
   },
-  "Housekeeping Coordination": {
-    fullDescription: "Real-time housekeeping coordination ensuring rooms are cleaned, inspected, and ready on time with smart status tracking and request handling.",
+  "Document Pre-Verification": {
+    fullDescription: "Streamlines guest identity verification and document collection before arrival. Handles KYC requirements, ID uploads, and registration form pre-filling for a smooth check-in experience.",
+    features: [
+      "ID document scanning & OCR",
+      "Facial recognition matching",
+      "Digital signature collection",
+      "Compliance requirement checks",
+      "Secure document storage"
+    ],
+    useCases: [
+      "Collect passport/ID before arrival",
+      "Verify guest identity remotely",
+      "Auto-fill registration forms",
+      "Comply with local regulations",
+      "Prevent fraud and chargebacks"
+    ],
+    stats: {
+      satisfaction: "98%",
+      responseTime: "< 8 sec",
+      metric: "31,000+ Verifications"
+    }
+  },
+
+  // ============================================
+  // ARRIVAL AGENTS
+  // ============================================
+  "Check-In Agent": {
+    fullDescription: "Streamlines the check-in process with digital coordination, room assignment optimization, and instant guest profiling. Reduces wait times and ensures a warm, efficient welcome.",
+    features: [
+      "Digital check-in/out",
+      "Room assignment optimization",
+      "Guest preference tracking",
+      "VIP & special request handling",
+      "Key card encoding integration"
+    ],
+    useCases: [
+      "Process express check-ins",
+      "Coordinate early check-in/late check-out",
+      "Assign rooms based on preferences",
+      "Manage upgrades and special requests",
+      "Handle walk-ins professionally"
+    ],
+    stats: {
+      satisfaction: "95%",
+      responseTime: "< 2 sec",
+      metric: "12,000+ Check-ins"
+    }
+  },
+  "Queue Reduction": {
+    fullDescription: "Intelligent queue management system that reduces front desk waiting times through express check-in options, self-service kiosks coordination, and smart guest flow optimization.",
+    features: [
+      "Real-time queue monitoring",
+      "Express lane assignment",
+      "Self-service kiosk integration",
+      "Wait time estimation",
+      "Staff allocation optimization"
+    ],
+    useCases: [
+      "Direct guests to shortest queues",
+      "Enable mobile check-in bypass",
+      "Manage peak arrival periods",
+      "Coordinate group arrivals",
+      "Send wait time notifications"
+    ],
+    stats: {
+      satisfaction: "93%",
+      responseTime: "< 1 sec",
+      metric: "67% Wait Reduction"
+    }
+  },
+  "Instant Information": {
+    fullDescription: "Provides immediate answers to common guest questions about WiFi, amenities, hotel facilities, and services. Available 24/7 to ensure guests have all the information they need.",
+    features: [
+      "WiFi credentials delivery",
+      "Facility hours & locations",
+      "Amenity information",
+      "Emergency contacts",
+      "Hotel policy explanations"
+    ],
+    useCases: [
+      "Share WiFi password instantly",
+      "Explain gym/pool hours",
+      "Provide parking information",
+      "Answer 'Where is...?' questions",
+      "Share checkout procedures"
+    ],
+    stats: {
+      satisfaction: "96%",
+      responseTime: "< 1 sec",
+      metric: "45,000+ Queries"
+    }
+  },
+
+  // ============================================
+  // IN-STAY AGENTS
+  // ============================================
+  "Housekeeping Concierge": {
+    fullDescription: "Real-time housekeeping coordination ensuring rooms are cleaned, inspected, and ready on time. Handles guest requests for extra amenities, turn-down service, and maintenance flagging.",
     features: [
       "Room status updates (Dirty/Clean/Inspected)",
       "Turn-down service scheduling",
@@ -97,11 +206,33 @@ const agentDetails = {
     stats: {
       satisfaction: "94%",
       responseTime: "< 2 sec",
-      roomsManaged: "45,000+"
+      metric: "45,000+ Rooms"
     }
   },
-  "Room Service Ordering": {
-    fullDescription: "Delight guests with seamless in-room dining. Takes orders, confirms dietary needs, estimates delivery time, and processes payments.",
+  "Bellboy & Luggage": {
+    fullDescription: "Coordinates luggage assistance, storage, and delivery services. Manages bellboy dispatching and ensures guests' belongings are handled with care and efficiency.",
+    features: [
+      "Luggage pickup requests",
+      "Storage coordination",
+      "Bellboy dispatching",
+      "Delivery tracking",
+      "Special handling instructions"
+    ],
+    useCases: [
+      "Request luggage pickup from room",
+      "Store bags for early arrivals",
+      "Coordinate airport luggage delivery",
+      "Track luggage location",
+      "Handle fragile item requests"
+    ],
+    stats: {
+      satisfaction: "95%",
+      responseTime: "< 3 sec",
+      metric: "8,500+ Requests"
+    }
+  },
+  "F&B Ordering": {
+    fullDescription: "Delight guests with seamless in-room dining. Takes orders, confirms dietary needs, estimates delivery time, and processes payments for a complete room service experience.",
     features: [
       "Full menu navigation",
       "Dietary & allergy handling",
@@ -119,11 +250,77 @@ const agentDetails = {
     stats: {
       satisfaction: "93%",
       responseTime: "< 5 sec",
-      ordersProcessed: "11,200+"
+      metric: "11,200+ Orders"
     }
   },
-  "Restaurant & Dining Reservations": {
-    fullDescription: "Manages table reservations, waitlists, special requests, and dining preferences across all hotel restaurants and outlets.",
+  "Travel Desk & City Guide": {
+    fullDescription: "Your guests' personal travel advisor providing local recommendations, tour bookings, attraction tickets, and insider tips to make their stay memorable.",
+    features: [
+      "Local attraction recommendations",
+      "Tour & activity booking",
+      "Ticket reservations",
+      "Transportation arrangements",
+      "Custom itinerary creation"
+    ],
+    useCases: [
+      "Book city tours and excursions",
+      "Reserve attraction tickets",
+      "Arrange car rentals",
+      "Provide local dining recommendations",
+      "Create personalized day plans"
+    ],
+    stats: {
+      satisfaction: "97%",
+      responseTime: "< 4 sec",
+      metric: "6,800+ Bookings"
+    }
+  },
+  "Complaint Handling": {
+    fullDescription: "Professional complaint resolution system that addresses guest concerns promptly, escalates issues appropriately, and ensures service recovery to maintain guest satisfaction.",
+    features: [
+      "Issue categorization",
+      "Automatic escalation rules",
+      "Service recovery suggestions",
+      "Compensation guidelines",
+      "Follow-up automation"
+    ],
+    useCases: [
+      "Address noise complaints",
+      "Handle room condition issues",
+      "Resolve billing disputes",
+      "Manage service failures",
+      "Process refund requests"
+    ],
+    stats: {
+      satisfaction: "89%",
+      responseTime: "< 5 sec",
+      metric: "92% Resolution Rate"
+    }
+  },
+  "Spa & Wellness": {
+    fullDescription: "Full spa booking system handling treatments, therapist preferences, packages, and wellness program enrollments. Creates relaxing experiences for your guests.",
+    features: [
+      "Treatment menu navigation",
+      "Therapist gender preference",
+      "Package & couple treatments",
+      "Availability syncing",
+      "Pre-treatment consultation"
+    ],
+    useCases: [
+      "Book massages and facials",
+      "Create spa day packages",
+      "Handle couple's treatments",
+      "Manage waiting lists",
+      "Send pre-treatment guidelines"
+    ],
+    stats: {
+      satisfaction: "98%",
+      responseTime: "< 4 sec",
+      metric: "8,700+ Appointments"
+    }
+  },
+  "Restaurant Reservations": {
+    fullDescription: "Manages table reservations, waitlists, special requests, and dining preferences across all hotel restaurants and outlets for seamless dining experiences.",
     features: [
       "Table availability lookup",
       "Waitlist & seating optimization",
@@ -141,33 +338,133 @@ const agentDetails = {
     stats: {
       satisfaction: "96%",
       responseTime: "< 3 sec",
-      reservations: "15,300+"
+      metric: "15,300+ Reservations"
     }
   },
-  "Spa, Salon & Wellness Appointments": {
-    fullDescription: "Full spa booking system handling treatments, therapist preferences, packages, and wellness program enrollments.",
+
+  // ============================================
+  // PRE-DEPARTURE AGENTS
+  // ============================================
+  "Checkout Coordination": {
+    fullDescription: "Streamlines the checkout process with express options, folio review, billing clarification, and payment processing. Ensures guests leave with a positive final impression.",
     features: [
-      "Treatment menu navigation",
-      "Therapist gender preference",
-      "Package & couple treatments",
-      "Availability syncing",
-      "Pre-treatment consultation"
+      "Express checkout options",
+      "Folio review & explanation",
+      "Payment processing",
+      "Invoice generation",
+      "Late checkout coordination"
     ],
     useCases: [
-      "Book massages and facials",
-      "Create spa day packages",
-      "Handle couple’s treatments",
-      "Manage waiting lists",
-      "Send pre-treatment guidelines"
+      "Process express checkouts",
+      "Explain billing charges",
+      "Handle payment issues",
+      "Arrange late checkouts",
+      "Send digital receipts"
     ],
     stats: {
-      satisfaction: "98%",
-      responseTime: "< 4 sec",
-      appointments: "8,700+"
+      satisfaction: "95%",
+      responseTime: "< 3 sec",
+      metric: "14,200+ Checkouts"
     }
   },
+  "Transport Booking": {
+    fullDescription: "Coordinates airport transfers, taxi bookings, car rentals, and local transportation for departing guests. Ensures smooth transitions from hotel to destination.",
+    features: [
+      "Airport transfer scheduling",
+      "Taxi/ride-share booking",
+      "Car rental coordination",
+      "Flight status monitoring",
+      "Multi-stop arrangements"
+    ],
+    useCases: [
+      "Book airport transfers",
+      "Arrange taxi pickups",
+      "Coordinate car rentals",
+      "Monitor flight changes",
+      "Handle group transportation"
+    ],
+    stats: {
+      satisfaction: "94%",
+      responseTime: "< 4 sec",
+      metric: "7,600+ Transfers"
+    }
+  },
+
+  // ============================================
+  // POST-STAY AGENTS
+  // ============================================
+  "Reviews Collection": {
+    fullDescription: "Proactively collects guest reviews and testimonials after checkout. Encourages satisfied guests to share their experiences on major review platforms.",
+    features: [
+      "Automated review requests",
+      "Multi-platform integration",
+      "Sentiment pre-screening",
+      "Incentive management",
+      "Response rate tracking"
+    ],
+    useCases: [
+      "Send post-stay review requests",
+      "Direct to TripAdvisor/Google",
+      "Collect video testimonials",
+      "Manage review incentives",
+      "Track review metrics"
+    ],
+    stats: {
+      satisfaction: "91%",
+      responseTime: "< 2 sec",
+      metric: "4,200+ Reviews"
+    }
+  },
+  "Feedback Management": {
+    fullDescription: "Comprehensive feedback collection and analysis system. Sends surveys, tracks satisfaction scores, and provides insights for service improvement.",
+    features: [
+      "Survey design & delivery",
+      "NPS/CSAT tracking",
+      "Sentiment analysis",
+      "Trend identification",
+      "Action item generation"
+    ],
+    useCases: [
+      "Send post-stay surveys",
+      "Track satisfaction trends",
+      "Identify service gaps",
+      "Generate improvement reports",
+      "Benchmark against competitors"
+    ],
+    stats: {
+      satisfaction: "93%",
+      responseTime: "< 2 sec",
+      metric: "38% Response Rate"
+    }
+  },
+  "Re-activation & Loyalty": {
+    fullDescription: "Manages loyalty program support, member benefits, and re-engagement campaigns. Brings guests back with personalized offers and reward redemptions.",
+    features: [
+      "Member lookup & verification",
+      "Points balance management",
+      "Reward redemption",
+      "Re-engagement campaigns",
+      "Personalized offers"
+    ],
+    useCases: [
+      "Check points and tier status",
+      "Redeem free nights/upgrades",
+      "Send win-back offers",
+      "Celebrate member milestones",
+      "Promote return bookings"
+    ],
+    stats: {
+      satisfaction: "97%",
+      responseTime: "< 2 sec",
+      metric: "22,000+ Members"
+    }
+  },
+
+  // ============================================
+  // BACK OFFICE AGENTS
+  // ============================================
   "Banquet & Event Sales": {
-    fullDescription: "Drives banquet inquiries, venue tours, menu customization, and contract generation for weddings, conferences, and private events.",
+    fullDescription: "Drives banquet inquiries, venue tours, menu customization, and contract generation for weddings, conferences, and private events. Your event sales assistant.",
     features: [
       "Venue capacity & layout info",
       "Menu & beverage package builder",
@@ -185,11 +482,11 @@ const agentDetails = {
     stats: {
       satisfaction: "95%",
       responseTime: "< 6 sec",
-      eventsBooked: "1,900+"
+      metric: "1,900+ Events"
     }
   },
   "Corporate & Group Sales": {
-    fullDescription: "Specialized in corporate accounts, group blocks, meeting packages, and negotiated rates with dedicated account management.",
+    fullDescription: "Specialized in corporate accounts, group blocks, meeting packages, and negotiated rates. Provides dedicated account management for your top clients.",
     features: [
       "Corporate rate negotiation",
       "Group block management",
@@ -207,209 +504,11 @@ const agentDetails = {
     stats: {
       satisfaction: "94%",
       responseTime: "< 5 sec",
-      contracts: "680+"
+      metric: "680+ Contracts"
     }
   },
-  "Loyalty Program Support": {
-    fullDescription: "Manages member inquiries, point balances, reward redemptions, tier benefits, and personalized loyalty communications.",
-    features: [
-      "Member lookup & verification",
-      "Points balance & history",
-      "Reward redemption",
-      "Tier status explanation",
-      "Personalized offers"
-    ],
-    useCases: [
-      "Check points and tier status",
-      "Redeem free nights/upgrades",
-      "Explain program benefits",
-      "Resolve membership issues",
-      "Send birthday/anniversary rewards"
-    ],
-    stats: {
-      satisfaction: "97%",
-      responseTime: "< 2 sec",
-      membersServed: "22,000+"
-    }
-  },
-  "Guest Feedback & Reputation Management": {
-    fullDescription: "Collects in-stay and post-stay feedback, responds to reviews across platforms, and helps improve online reputation proactively.",
-    features: [
-      "In-stay feedback collection",
-      "Review response automation",
-      "Sentiment analysis",
-      "TripAdvisor/Booking.com integration",
-      "Management alerts"
-    ],
-    useCases: [
-      "Send post-stay surveys",
-      "Respond to online reviews",
-      "Address complaints instantly",
-      "Thank positive reviewers",
-      "Track reputation score"
-    ],
-    stats: {
-      satisfaction: "96%",
-      responseTime: "< 1 min",
-      reviewsManaged: "14,000+"
-    }
-  },
-  "Billing & Accounts Follow-ups": {
-    fullDescription: "Handles folio inquiries, payment disputes, invoice generation, group master billing, and accounts receivable follow-ups.",
-    features: [
-      "Folio review & explanation",
-      "Charge disputes resolution",
-      "Invoice generation",
-      "Payment link sharing",
-      "AR aging management"
-    ],
-    useCases: [
-      "Explain charges on guest folio",
-      "Resolve billing disputes",
-      "Send invoices to companies",
-      "Process credit card authorizations",
-      "Follow up on unpaid balances"
-    ],
-    stats: {
-      satisfaction: "93%",
-      responseTime: "< 4 sec",
-      disputesResolved: "4,200+"
-    }
-  },
-  "Travel Desk & Transportation": {
-    fullDescription: "Coordinates airport transfers, limousines, city tours, and all guest transportation needs with preferred vendors.",
-    features: [
-      "Airport transfer booking",
-      "Limousine & private car",
-      "Flight monitoring",
-      "Meet & greet service",
-      "Group shuttle coordination"
-    ],
-    useCases: [
-      "Book airport pickup/drop-off",
-      "Arrange VIP transfers",
-      "Monitor flight delays",
-      "Organize city tours",
-      "Coordinate group shuttles"
-    ],
-    stats: {
-      satisfaction: "95%",
-      responseTime: "< 5 sec",
-      transfers: "19,000+"
-    }
-  },
-  "Engineering & Maintenance Requests": {
-    fullDescription: "Logs, tracks, and follows up on all maintenance requests from guest rooms and public areas with priority routing.",
-    features: [
-      "Issue logging & categorization",
-      "Priority assignment",
-      "Technician dispatch",
-      "Status updates to guest",
-      "Preventive maintenance alerts"
-    ],
-    useCases: [
-      "Report AC not working",
-      "Request light bulb replacement",
-      "Report leaking faucet",
-      "Track repair progress",
-      "Follow up on pending fixes"
-    ],
-    stats: {
-      satisfaction: "94%",
-      responseTime: "< 2 min",
-      requestsResolved: "28,000+"
-    }
-  },
-  "Upselling & In-stay Promotions": {
-    fullDescription: "Proactively offers room upgrades, packages, dining credits, and experiences to maximize revenue during the guest stay.",
-    features: [
-      "Upgrade availability detection",
-      "Personalized offer engine",
-      "Late check-out offers",
-      "Dining & spa credits",
-      "Experience bundles"
-    ],
-    useCases: [
-      "Offer suite upgrades",
-      "Suggest dining packages",
-      "Promote spa credits",
-      "Offer late check-out",
-      "Bundle activities"
-    ],
-    stats: {
-      satisfaction: "96%",
-      responseTime: "< 3 sec",
-      revenueGenerated: "$2.4M+"
-    }
-  },
-  "Marketing Outreach & Offers": {
-    fullDescription: "Sends targeted pre-arrival, in-stay, and post-stay offers based on guest profile, stay history, and preferences.",
-    features: [
-      "Segmentation & targeting",
-      "Personalized email/SMS",
-      "Re-engagement campaigns",
-      "Birthday & anniversary offers",
-      "Last-minute deals"
-    ],
-    useCases: [
-      "Welcome back returning guests",
-      "Send birthday offers",
-      "Promote shoulder season deals",
-      "Win back lapsed guests",
-      "Announce new facilities"
-    ],
-    stats: {
-      satisfaction: "95%",
-      responseTime: "< 2 sec",
-      campaignsSent: "87,000+"
-    }
-  },
-  "Guest Identity & Document Verification": {
-    fullDescription: "Securely verifies guest identity and travel documents during check-in to ensure compliance and prevent fraud.",
-    features: [
-      "ID & passport scanning",
-      "Facial recognition match",
-      "Document authenticity check",
-      "Blacklist screening",
-      "Registration card auto-fill"
-    ],
-    useCases: [
-      "Verify guest identity at check-in",
-      "Detect fake IDs",
-      "Auto-fill registration forms",
-      "Comply with local laws",
-      "Prevent fraud and chargebacks"
-    ],
-    stats: {
-      satisfaction: "98%",
-      responseTime: "< 8 sec",
-      verifications: "31,000+"
-    }
-  },
-  "No-Show Handling & Arrival Confirmations": {
-    fullDescription: "Sends arrival confirmations, manages guaranteed reservations, and handles no-shows and cancellations professionally.",
-    features: [
-      "Pre-arrival confirmation",
-      "No-show charge processing",
-      "Cancellation policy enforcement",
-      "Waitlist activation",
-      "Overbooking management"
-    ],
-    useCases: [
-      "Confirm arrival details",
-      "Charge no-show fees",
-      "Release rooms from waitlist",
-      "Handle last-minute cancellations",
-      "Manage overbooking gracefully"
-    ],
-    stats: {
-      satisfaction: "94%",
-      responseTime: "< 3 sec",
-      confirmations: "29,000+"
-    }
-  },
-  "Travel Agent / OTA Partner Relations": {
-    fullDescription: "Dedicated support for travel agents, OTAs, and wholesalers handling commissions, allocations, and special requests.",
+  "OTA Partner Relations": {
+    fullDescription: "Dedicated support for travel agents, OTAs, and wholesalers. Handles commissions, allocations, rate loading, and partner inquiries professionally.",
     features: [
       "Agent portal support",
       "Commission reconciliation",
@@ -427,11 +526,11 @@ const agentDetails = {
     stats: {
       satisfaction: "93%",
       responseTime: "< 6 sec",
-      partnersSupported: "1,100+"
+      metric: "1,100+ Partners"
     }
   },
   "Human Resources": {
-    fullDescription: "Screens candidates, schedules interviews, conducts initial assessments, and supports hotel staffing needs efficiently.",
+    fullDescription: "Screens candidates, schedules interviews, conducts initial assessments, and supports hotel staffing needs. Streamlines your recruitment process.",
     features: [
       "Resume parsing & scoring",
       "Interview scheduling",
@@ -449,76 +548,31 @@ const agentDetails = {
     stats: {
       satisfaction: "92%",
       responseTime: "< 5 sec",
-      candidatesScreened: "5,600+"
+      metric: "5,600+ Candidates"
     }
-    
   },
-  "Vendor & Supplier Coordination": {
-    fullDescription: "Manages vendor communications, purchase orders, delivery tracking, and supplier performance for smooth operations.",
+  "Engineering & Maintenance": {
+    fullDescription: "Manages maintenance requests, work orders, preventive maintenance schedules, and vendor coordination for smooth hotel operations.",
     features: [
-      "PO creation & tracking",
-      "Delivery coordination",
-      "Quality issue reporting",
-      "Contract compliance",
-      "Supplier performance scoring"
+      "Work order management",
+      "Preventive maintenance scheduling",
+      "Vendor coordination",
+      "Asset tracking",
+      "Priority escalation"
     ],
     useCases: [
-      "Coordinate linen delivery",
-      "Order F&B supplies",
-      "Report quality issues",
-      "Track incoming shipments",
-      "Negotiate with vendors"
+      "Log maintenance requests",
+      "Schedule preventive checks",
+      "Track repair status",
+      "Coordinate with contractors",
+      "Manage equipment inventory"
     ],
     stats: {
       satisfaction: "91%",
-      responseTime: "< 7 sec",
-      ordersProcessed: "9,300+"
+      responseTime: "< 4 sec",
+      metric: "12,400+ Work Orders"
     }
-  },
-  "Security & Emergency Communication": {
-    fullDescription: "Critical emergency response system connecting guests and staff to security, medical, and management teams instantly.",
-    features: [
-      "Emergency keyword detection",
-      "Security team alerting",
-      "Location triangulation",
-      "Protocol guidance",
-      "Incident logging"
-    ],
-    useCases: [
-      "Guest reports suspicious activity",
-      "Medical emergency in room",
-      "Fire or safety concern",
-      "Lost child reporting",
-      "Silent alarm activation"
-    ],
-    stats: {
-      satisfaction: "99%",
-      responseTime: "< 10 sec",
-      incidentsHandled: "890+"
-    }
-  },
-  "gourav": {
-    fullDescription: "Critical emergency response system connecting guests and staff to security, medical, and management teams instantly.",
-    features: [
-      "Emergency keyword detection",
-      "Security team alerting",
-      "Location triangulation",
-      "Protocol guidance",
-      "Incident logging"
-    ],
-    useCases: [
-      "Guest reports suspicious activity",
-      "Medical emergency in room",
-      "Fire or safety concern",
-      "Lost child reporting",
-      "Silent alarm activation"
-    ],
-    stats: {
-      satisfaction: "99%",
-      responseTime: "< 10 sec",
-      incidentsHandled: "890+"
-    }
-  },
+  }
 };
 
 export const AgentDetail: React.FC<AgentDetailProps> = ({
@@ -529,7 +583,7 @@ export const AgentDetail: React.FC<AgentDetailProps> = ({
   getAgentName
 }) => {
   const Icon = agent.icon;
-  const details = agentDetails[agent.title as keyof typeof agentDetails];
+  const details = agentDetails[agent.title];
 
   const handleTryDemo = (e: React.MouseEvent) => {
     e.preventDefault();
@@ -538,9 +592,48 @@ export const AgentDetail: React.FC<AgentDetailProps> = ({
     getAgentName(agent.title);
   };
 
-  // Fallback if agent not in details (shouldn't happen with current list)
+  // Fallback if agent not in details
   if (!details) {
-    return <div>Agent details coming soon...</div>;
+    return (
+      <div className="agent-detail-container">
+        <div className="agent-detail-header">
+          <button 
+            className="back-button"
+            onClick={onBack}
+            aria-label="Back to agents"
+          >
+            <ArrowLeft size={20} />
+            <span>Back to Agents</span>
+          </button>
+        </div>
+        <div className="agent-detail-content">
+          <div className="agent-hero">
+            <div 
+              className="agent-hero-icon"
+              style={{ backgroundColor: agent.imageUrl }}
+            >
+              <Icon size={48} className="text-white" />
+            </div>
+            <div className="agent-hero-info">
+              <h1 className="agent-title">{agent.title}</h1>
+              <p className="agent-subtitle">Hospitality AI Agent</p>
+              <p className="agent-description">{agent.description}</p>
+            </div>
+            <button 
+              className="try-demo-hero-button"
+              onClick={handleTryDemo}
+            >
+              <Mic size={20} />
+              Try Demo Now
+            </button>
+          </div>
+          <div className="coming-soon-message">
+            <h2>Detailed Information Coming Soon</h2>
+            <p>We're preparing comprehensive details for this agent. In the meantime, try the interactive demo!</p>
+          </div>
+        </div>
+      </div>
+    );
   }
 
   return (
@@ -596,14 +689,14 @@ export const AgentDetail: React.FC<AgentDetailProps> = ({
           <div className="stat-card">
             <Users className="stat-icon" />
             <div className="stat-content">
-              <div className="stat-value">{Object.values(details.stats)[2]}</div>
+              <div className="stat-value">{details.stats.metric}</div>
               <div className="stat-label">Total Interactions</div>
             </div>
           </div>
         </div>
 
         <div className="agent-details-grid">
-          <div className="detail-section">
+          <div className="detail-section about-section">
             <h2 className="section-title">
               <Award size={24} />
               About This Agent

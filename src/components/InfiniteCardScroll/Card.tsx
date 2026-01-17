@@ -6,7 +6,7 @@ interface CardProps {
   isActive: boolean;
   handleStart: (agent_code: string) => void;
   handleEnd: () => void;
-  getAgentName: (agentName: string) => void;
+  getAgentName:   (agentName: string) => void;
   onAgentSelect?: (agent: CardInterface) => void;
 }
 
