@@ -118,7 +118,7 @@ export const mockCards: CardInterface[] = [
     imageUrl: "#4CAF50",
     icon: MessageSquare,
     tags: ["Info", "Support"],
-    agent_code: "info-agent-001",
+    agent_code: "eedf33bd-858b-43d7-ab81-939a682185f7",
     category: SERVICE_CATEGORIES.ARRIVAL,
   },
 
@@ -144,7 +144,7 @@ export const mockCards: CardInterface[] = [
     imageUrl: "#2196F3",
     icon: Truck,
     tags: ["Bellboy", "Luggage"],
-    agent_code: "bellboy-agent-001",
+    agent_code: "3ea412e0-a030-41c9-90fa-1790b7ab3ec0",
     category: SERVICE_CATEGORIES.IN_STAY,
   },
   {
@@ -166,7 +166,7 @@ export const mockCards: CardInterface[] = [
     imageUrl: "#2196F3",
     icon: MapPin,
     tags: ["Travel", "Tours"],
-    agent_code: "travel-desk-001",
+    agent_code: "c1928b1a-a847-41dd-8723-e90849377482",
     category: SERVICE_CATEGORIES.IN_STAY,
   },
   {
@@ -251,7 +251,7 @@ export const mockCards: CardInterface[] = [
     imageUrl: "#FF9800",
     icon: Home,
     tags: ["Feedback", "Surveys"],
-    agent_code: "feedback-agent-001",
+    agent_code: "30a0f7a9-0aef-4f80-9105-a439e05f812f",
     category: SERVICE_CATEGORIES.POST_STAY,
   },
   {
