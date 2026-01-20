@@ -177,7 +177,7 @@ export const mockCards: CardInterface[] = [
     imageUrl: "#2196F3",
     icon: AlertTriangle,
     tags: ["Complaints", "Support"],
-    agent_code: "32dba1fe-79d0-4f70-b618-4bd9d769414c",
+    agent_code: "4e4bff56-1f71-446b-b785-062aac1000dc",
     category: SERVICE_CATEGORIES.IN_STAY,
   },
   {
