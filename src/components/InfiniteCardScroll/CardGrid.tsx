@@ -119,11 +119,14 @@ export const CardGrid: React.FC<CardGridProps> = memo(
       };
 
       const handleIntersect = (entries: IntersectionObserverEntry[]) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setActiveCategory(entry.target.id);
-          }
-        });
+        // Find the section that is most visible or the first one intersecting from the top
+        const visibleSection = entries
+          .filter(entry => entry.isIntersecting)
+          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+
+        if (visibleSection) {
+          setActiveCategory(visibleSection.target.id);
+        }
       };
 
       const observer = new IntersectionObserver(handleIntersect, observerOptions);
@@ -292,8 +295,10 @@ export const CardGrid: React.FC<CardGridProps> = memo(
                       onClick={(e) => {
                         e.preventDefault();
                         setActiveCategory(category);
-                        const el = document.getElementById(category);
-                        el?.scrollIntoView({ behavior: "smooth" });
+                        const el = sectionRefs.current[category];
+                        if (el) {
+                          el.scrollIntoView({ behavior: "smooth" });
+                        }
                       }}
                     >
                       <div className="nav-item-icon">
