@@ -1,7 +1,8 @@
 // CardGrid.tsx
-import React, { memo, useRef, useState } from "react";
+import React, { memo, useRef, useState, useEffect } from "react";
 import { Card } from "./Card";
 import { AgentDetail } from "./AgentDetail";
+import { useNavigation } from "../../contexts/NavigationContext";
 import type { CardInterface } from "../../types";
 import RealEstateAgentVoice from "./RealEstateAgentVoice";
 import {
@@ -105,23 +106,44 @@ export const CardGrid: React.FC<CardGridProps> = memo(
     const [selectedAgent, setSelectedAgent] = useState<CardInterface | null>(null);
     const [agentName, setAgentName] = useState<string | null>(null);
     const [activeCategory, setActiveCategory] = useState<string | null>(null);
+    const { currentPath, navigate } = useNavigation();
     const cardRefs = useRef<{ [key: string]: HTMLDivElement | null }>({});
+    const sectionRefs = useRef<{ [key: string]: HTMLElement | null }>({});
+
+    // Sync active category with scroll position
+    useEffect(() => {
+      const observerOptions = {
+        root: null,
+        rootMargin: "-20% 0px -70% 0px",
+        threshold: 0,
+      };
+
+      const handleIntersect = (entries: IntersectionObserverEntry[]) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setActiveCategory(entry.target.id);
+          }
+        });
+      };
+
+      const observer = new IntersectionObserver(handleIntersect, observerOptions);
+
+      // Observe all category sections
+      Object.values(sectionRefs.current).forEach((section) => {
+        if (section) observer.observe(section);
+      });
+
+      return () => observer.disconnect();
+    }, [cards]);
 
     const openAgentDetail = (agent: CardInterface) => {
       setSelectedAgent(agent);
       setAgentName(agent.title);
-      const cardElement = cardRefs.current[agent.id];
-      cardElement?.scrollIntoView({ behavior: "smooth", block: "center" });
     };
 
     const closeAgentDetail = () => {
       setSelectedAgent(null);
       setAgentName(null);
-    };
-
-    const getSelectedCardElement = (): HTMLElement | null => {
-      if (!selectedAgent) return null;
-      return cardRefs.current[selectedAgent.id] || null;
     };
 
     const hasCategories = cards && cards.length > 0 && cards.some((card) => card.category);
@@ -182,7 +204,7 @@ export const CardGrid: React.FC<CardGridProps> = memo(
               onClose={handleEnd}
               sessionStatus={sessionStatus}
               agentName={agentName ?? undefined}
-              anchorElement={getSelectedCardElement()}
+              anchorElement={null} // Default to bottom-center in detail view for better UX
             />
           )}
         </div>
@@ -299,6 +321,7 @@ export const CardGrid: React.FC<CardGridProps> = memo(
                   <section
                     key={category}
                     id={category}
+                    ref={(el) => (sectionRefs.current[category] = el)}
                     className="category-section"
                     style={{
                       '--section-color': config.color,

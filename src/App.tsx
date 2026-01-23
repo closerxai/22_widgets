@@ -25,7 +25,7 @@ function App() {
 
   sessionref.current?.addEventListener("status", (event) => {
     console.log("Session status changed: ", event);
-    setSessionStatus(sessionref.current?.status);
+    setSessionStatus(sessionref.current?.status ?? null);
   });
 
   const handleStart = async (agent_code: string) => {
