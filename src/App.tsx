@@ -4,6 +4,9 @@ import { mockCards } from "./data/mockCards";
 import { UltravoxSession } from "ultravox-client";
 import axios from "axios";
 import { CardGrid } from "./components/InfiniteCardScroll/CardGrid";
+import { NavigationProvider } from "./contexts/NavigationContext";
+import { Navbar } from "./components/Navbar";
+
 function App() {
   const [isListening, setIsListening] = useState(false);
   const [callId, setCallId] = useState<string | null>(null);
@@ -85,15 +88,22 @@ function App() {
   };
 
   return (
-    <div className="max-w-10xl mx-auto">
-      <CardGrid
-        cards={mockCards}
-        handleStart={handleStart}
-        handleEnd={handleEnd}
-        showRealEstateAgentVoice={showRealEstateAgentVoice}
-        sessionStatus={sessionStatus}
-      />
-    </div>
+    <NavigationProvider>
+      <div className="min-h-screen bg-background">
+        <Navbar />
+        <main className="pt-20">
+          <div className="max-w-10xl mx-auto">
+            <CardGrid
+              cards={mockCards}
+              handleStart={handleStart}
+              handleEnd={handleEnd}
+              showRealEstateAgentVoice={showRealEstateAgentVoice}
+              sessionStatus={sessionStatus}
+            />
+          </div>
+        </main>
+      </div>
+    </NavigationProvider>
   );
 }
 

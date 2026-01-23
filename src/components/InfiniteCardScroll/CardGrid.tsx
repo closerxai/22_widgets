@@ -4,11 +4,11 @@ import { Card } from "./Card";
 import { AgentDetail } from "./AgentDetail";
 import type { CardInterface } from "../../types";
 import RealEstateAgentVoice from "./RealEstateAgentVoice";
-import { 
-  Plane, 
-  LogIn, 
-  Home, 
-  LogOut, 
+import {
+  Plane,
+  LogIn,
+  Home,
+  LogOut,
   Star,
   Briefcase,
   Sparkles
@@ -16,9 +16,9 @@ import {
 import "./CardGrid.css";
 
 // Category configuration with colors, icons, and gradients
-const categoryConfig: Record<string, { 
-  label: string; 
-  color: string; 
+const categoryConfig: Record<string, {
+  label: string;
+  color: string;
   gradient: string;
   lightBg: string;
   icon: React.ElementType;
@@ -162,7 +162,7 @@ export const CardGrid: React.FC<CardGridProps> = memo(
           handleStart={handleStart}
           handleEnd={handleEnd}
           getAgentName={setAgentName}
-          onAgentSelect={() => {}}
+          onAgentSelect={() => { }}
         />
       </div>
     );
@@ -238,8 +238,8 @@ export const CardGrid: React.FC<CardGridProps> = memo(
             anchorElement={
               agentName
                 ? cardRefs.current[
-                    cards.find((c) => c.title === agentName)?.id || ""
-                  ] || null
+                cards.find((c) => c.title === agentName)?.id || ""
+                ] || null
                 : null
             }
           />
@@ -255,18 +255,24 @@ export const CardGrid: React.FC<CardGridProps> = memo(
                   const categoryCards = groupedCards[category];
                   if (!categoryCards || categoryCards.length === 0) return null;
                   const IconComponent = config.icon;
+                  const href = `#${category}`;
 
                   return (
                     <a
                       key={category}
-                      href={`#${category}`}
+                      href={href}
                       className={`category-nav-item ${activeCategory === category ? 'active' : ''}`}
-                      style={{ 
+                      style={{
                         '--nav-color': config.color,
                         '--nav-gradient': config.gradient,
                         '--nav-bg': config.lightBg
                       } as React.CSSProperties}
-                      onClick={() => setActiveCategory(category)}
+                      onClick={(e) => {
+                        e.preventDefault();
+                        setActiveCategory(category);
+                        const el = document.getElementById(category);
+                        el?.scrollIntoView({ behavior: "smooth" });
+                      }}
                     >
                       <div className="nav-item-icon">
                         <IconComponent size={20} />
@@ -294,7 +300,7 @@ export const CardGrid: React.FC<CardGridProps> = memo(
                     key={category}
                     id={category}
                     className="category-section"
-                    style={{ 
+                    style={{
                       '--section-color': config.color,
                       '--section-gradient': config.gradient,
                       '--section-bg': config.lightBg
