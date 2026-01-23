@@ -90,8 +90,8 @@ function App() {
   return (
     <NavigationProvider>
       <div className="min-h-screen bg-background">
-        <Navbar />
-        <main className="pt-20">
+        {/* <Navbar /> */}
+        <main className="">
           <div className="max-w-10xl mx-auto">
             <CardGrid
               cards={mockCards}
