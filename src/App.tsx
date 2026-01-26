@@ -40,7 +40,7 @@ function App() {
           {
             agent_code: agent_code,
             schema_name: "09483b13-47ac-47b2-95cf-4ca89b3debfa",
-          }
+          },
         );
         setStopScrolls(true);
         setShowRealEstateAgentVoice(true);
@@ -65,7 +65,7 @@ function App() {
             call_session_id: callSessionId,
             call_id: callId,
             schema_name: "09483b13-47ac-47b2-95cf-4ca89b3debfa",
-          }
+          },
         );
       }
     } catch (error) {

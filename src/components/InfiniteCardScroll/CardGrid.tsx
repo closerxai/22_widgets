@@ -1,14 +1,13 @@
 // CardGrid.tsx
-import React, { memo, useRef, useState } from "react";
+import React, { memo, useRef, useState, useMemo, useEffect } from "react";
 import { Card } from "./Card";
 import { AgentDetail } from "./AgentDetail";
 import type { CardInterface } from "../../types";
 import RealEstateAgentVoice from "./RealEstateAgentVoice";
-import { categoryOrder } from "./CardGrid.constants";
+import { categoryConfig, categoryOrder } from "./CardGrid.constants";
 import { HeroSection } from "./HeroSection";
 import { CategoryNav } from "./CategoryNav";
 import { CategorySection } from "./CategorySection";
-import { useActiveCategory } from "./useActiveCategory";
 import "./CardGrid.css";
 
 interface CardGridProps {
@@ -21,7 +20,7 @@ interface CardGridProps {
 }
 
 /**
- * Main component for rendering the agent grid with categories and hero section.
+ * Main component for rendering the agent grid with a tabbed interface.
  */
 export const CardGrid: React.FC<CardGridProps> = memo(
   ({
@@ -38,13 +37,41 @@ export const CardGrid: React.FC<CardGridProps> = memo(
     );
     const [agentName, setAgentName] = useState<string | null>(null);
     const cardRefs = useRef<{ [key: string]: HTMLDivElement | null }>({});
-    const sectionRefs = useRef<{ [key: string]: HTMLElement | null }>({});
 
-    // Hooks
-    const { activeCategory, setActiveCategory } = useActiveCategory({
-      cards,
-      sectionRefs,
-    });
+    // Group cards by category
+    const groupedCards = useMemo(() => {
+      return categoryOrder.reduce(
+        (acc, category) => {
+          const categoryCards = cards.filter(
+            (card) => card.category === category,
+          );
+          if (categoryCards.length > 0) acc[category] = categoryCards;
+          return acc;
+        },
+        {} as Record<string, CardInterface[]>,
+      );
+    }, [cards]);
+
+    // Determine available categories
+    const availableCategories = useMemo(
+      () => categoryOrder.filter((cat) => groupedCards[cat]?.length > 0),
+      [groupedCards],
+    );
+
+    // Active Category State
+    const [activeCategory, setActiveCategory] = useState<string | null>(
+      availableCategories[0] || null,
+    );
+
+    // Ensure activeCategory stays valid if cards change
+    useEffect(() => {
+      if (
+        availableCategories.length > 0 &&
+        (!activeCategory || !availableCategories.includes(activeCategory))
+      ) {
+        setActiveCategory(availableCategories[0]);
+      }
+    }, [availableCategories, activeCategory]);
 
     // Helper Functions
     const openAgentDetail = (agent: CardInterface) => {
@@ -59,23 +86,6 @@ export const CardGrid: React.FC<CardGridProps> = memo(
 
     const hasCategories =
       cards?.length > 0 && cards.some((card) => card.category);
-
-    const groupedCards = categoryOrder.reduce(
-      (acc, category) => {
-        const categoryCards = cards.filter(
-          (card) => card.category === category,
-        );
-        if (categoryCards.length > 0) acc[category] = categoryCards;
-        return acc;
-      },
-      {} as Record<string, CardInterface[]>,
-    );
-
-    const handleCategoryNavClick = (category: string) => {
-      setActiveCategory(category);
-      const el = sectionRefs.current[category];
-      if (el) el.scrollIntoView({ behavior: "smooth" });
-    };
 
     const renderCard = (card: CardInterface, categoryColor: string) => (
       <div
@@ -128,8 +138,15 @@ export const CardGrid: React.FC<CardGridProps> = memo(
     }
 
     // Main Grid Rendering
+    const activeColor = activeCategory
+      ? categoryConfig[activeCategory]?.color
+      : "#f8fafc";
+
     return (
-      <div className={`card-grid-wrapper ${className}`}>
+      <div
+        className={`card-grid-wrapper ${className}`}
+        style={{ "--active-accent": activeColor } as React.CSSProperties}
+      >
         <HeroSection totalAgents={cards.length} />
 
         {showRealEstateAgentVoice && !selectedAgent && (
@@ -149,28 +166,23 @@ export const CardGrid: React.FC<CardGridProps> = memo(
 
         {hasCategories ? (
           <div className="categories-container">
-            <CategoryNav
-              groupedCards={groupedCards}
-              activeCategory={activeCategory}
-              onCategoryClick={handleCategoryNavClick}
-            />
+            {availableCategories.length > 1 && (
+              <CategoryNav
+                groupedCards={groupedCards}
+                activeCategory={activeCategory}
+                onCategoryClick={setActiveCategory}
+              />
+            )}
 
-            <div className="category-sections">
-              {categoryOrder.map((category) => {
-                const categoryCards = groupedCards[category];
-                if (!categoryCards || categoryCards.length === 0) return null;
-
-                return (
-                  <CategorySection
-                    key={category}
-                    category={category}
-                    categoryCards={categoryCards}
-                    sectionRef={(el) => (sectionRefs.current[category] = el)}
-                    renderCard={renderCard}
-                  />
-                );
-              })}
-            </div>
+            {activeCategory && groupedCards[activeCategory] && (
+              <CategorySection
+                key={activeCategory}
+                category={activeCategory}
+                categoryCards={groupedCards[activeCategory]}
+                sectionRef={() => {}} // No ref needed for single section rendering
+                renderCard={renderCard}
+              />
+            )}
           </div>
         ) : (
           <div className="card-grid">
