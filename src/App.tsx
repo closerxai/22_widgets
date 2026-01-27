@@ -28,7 +28,7 @@ function App() {
     setSessionStatus(sessionref.current?.status ?? null);
   });
 
-  const handleStart = async (agent_code: string) => {
+  const handleStart = async (agent_code: string, schema_name?: string) => {
     if (sessionStatus !== "disconnected") {
       handleEnd();
     }
@@ -39,7 +39,7 @@ function App() {
           `https://app.snowie.ai/api/start-thunder/`,
           {
             agent_code: agent_code,
-            schema_name: "09483b13-47ac-47b2-95cf-4ca89b3debfa",
+            schema_name: schema_name || "09483b13-47ac-47b2-95cf-4ca89b3debfa",
           },
         );
         setStopScrolls(true);
@@ -64,7 +64,7 @@ function App() {
           {
             call_session_id: callSessionId,
             call_id: callId,
-            schema_name: "09483b13-47ac-47b2-95cf-4ca89b3debfa",
+            schema_name: schema_name || "09483b13-47ac-47b2-95cf-4ca89b3debfa",
           },
         );
       }

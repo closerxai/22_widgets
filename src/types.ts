@@ -18,5 +18,6 @@ export interface CardInterface {
   tags?: string[];
   link?: string;
   agent_code: string;
+  schema_name?: string;
   category?: Category;
 }
