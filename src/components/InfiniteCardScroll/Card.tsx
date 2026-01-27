@@ -1,12 +1,14 @@
+import React from "react";
+import { motion } from "framer-motion";
 import type { CardInterface } from "../../types";
-import { Mic } from "lucide-react";
+import { Mic, Info, ChevronRight } from "lucide-react";
 import "./Card.css";
 interface CardProps {
   card: CardInterface;
   isActive: boolean;
   handleStart: (agent_code: string) => void;
   handleEnd: () => void;
-  getAgentName:   (agentName: string) => void;
+  getAgentName: (agentName: string) => void;
   onAgentSelect?: (agent: CardInterface) => void;
 }
 
@@ -17,7 +19,7 @@ export const Card: React.FC<CardProps> = ({
   getAgentName,
   onAgentSelect,
 }) => {
-  
+
   const Icon = card.icon;
   const handleCardClick = () => {
     if (onAgentSelect) {
@@ -30,15 +32,21 @@ export const Card: React.FC<CardProps> = ({
       onClick={handleCardClick}
     >
       {" "}
-      <div
+      <motion.div
+        layoutId={`card-icon-${card.id}`}
         className="card-icon-wrapper"
         style={{ backgroundColor: card.imageUrl }}
       >
-        {!card.imageAlt ? (<Icon size={32} color="#FFFFFF" />) :<img className="rounded-full h-[100px] w-[100px]" src={card.imageAlt} alt=""/>
-       }
-        
-        </div>
+        {!card.imageAlt ? (<Icon size={32} color="#FFFFFF" />) : <img className="rounded-full h-[100px] w-[100px]" src={card.imageAlt} alt="" />
+        }
+
+      </motion.div>
       <div className="card-content">
+        <div className="view-details-hint" aria-hidden="true">
+          <Info size={14} />
+          <span>View Details</span>
+          <ChevronRight size={14} className="chevron" />
+        </div>
         <div className="card-header">
           <h3 className="card-title">{card.title}</h3>
           <p className="card-subtitle">USE CASE FOR</p>

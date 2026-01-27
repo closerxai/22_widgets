@@ -1,5 +1,6 @@
 // CardGrid.tsx
 import React, { memo, useRef, useState, useMemo, useEffect } from "react";
+import { AnimatePresence, motion } from "framer-motion";
 import { Card } from "./Card";
 import { AgentDetail } from "./AgentDetail";
 import type { CardInterface } from "../../types";
@@ -114,28 +115,26 @@ export const CardGrid: React.FC<CardGridProps> = memo(
       </div>
     );
 
-    // Detail View Rendering
-    if (selectedAgent) {
-      return (
-        <div className="agent-detail-wrapper">
-          <AgentDetail
-            agent={selectedAgent}
-            onBack={closeAgentDetail}
-            handleStart={handleStart}
-            handleEnd={handleEnd}
-            getAgentName={setAgentName}
-          />
-          {showRealEstateAgentVoice && (
-            <RealEstateAgentVoice
-              onClose={handleEnd}
-              sessionStatus={sessionStatus}
-              agentName={agentName ?? undefined}
-              anchorElement={null}
-            />
-          )}
-        </div>
-      );
-    }
+    // Locked body scroll and Escape key listener
+    useEffect(() => {
+      const handleKeyDown = (e: KeyboardEvent) => {
+        if (e.key === 'Escape' && selectedAgent) {
+          closeAgentDetail();
+        }
+      };
+
+      if (selectedAgent) {
+        document.body.style.overflow = 'hidden';
+        window.addEventListener('keydown', handleKeyDown);
+      } else {
+        document.body.style.overflow = '';
+      }
+
+      return () => {
+        document.body.style.overflow = '';
+        window.removeEventListener('keydown', handleKeyDown);
+      };
+    }, [selectedAgent]);
 
     // Main Grid Rendering
     const activeColor = activeCategory
@@ -189,6 +188,40 @@ export const CardGrid: React.FC<CardGridProps> = memo(
             {cards.map((card) => renderCard(card, "#FF5722"))}
           </div>
         )}
+
+        <AnimatePresence>
+          {selectedAgent && (
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.3 }}
+              className="agent-detail-overlay"
+              onClick={closeAgentDetail}
+            >
+              <div
+                className="agent-detail-modal-wrapper"
+                onClick={(e) => e.stopPropagation()}
+              >
+                <AgentDetail
+                  agent={selectedAgent}
+                  onBack={closeAgentDetail}
+                  handleStart={handleStart}
+                  handleEnd={handleEnd}
+                  getAgentName={setAgentName}
+                />
+              </div>
+              {showRealEstateAgentVoice && (
+                <RealEstateAgentVoice
+                  onClose={handleEnd}
+                  sessionStatus={sessionStatus}
+                  agentName={agentName ?? undefined}
+                  anchorElement={null}
+                />
+              )}
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
     );
   },

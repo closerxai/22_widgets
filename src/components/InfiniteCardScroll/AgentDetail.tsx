@@ -1,5 +1,6 @@
 import React from 'react';
 import { ArrowLeft, Mic, Star, Users, Clock, Award } from 'lucide-react';
+import { motion } from 'framer-motion';
 import type { CardInterface } from '../../types';
 import './AgentDetail.css';
 
@@ -608,12 +609,13 @@ export const AgentDetail: React.FC<AgentDetailProps> = ({
         </div>
         <div className="agent-detail-content">
           <div className="agent-hero">
-            <div
+            <motion.div
+              layoutId={`card-icon-${agent.id}`}
               className="agent-hero-icon"
               style={{ backgroundColor: agent.imageUrl }}
             >
               <Icon size={48} className="text-white" />
-            </div>
+            </motion.div>
             <div className="agent-hero-info">
               <h1 className="agent-title">{agent.title}</h1>
               <p className="agent-subtitle">Hospitality AI Agent</p>
@@ -651,12 +653,13 @@ export const AgentDetail: React.FC<AgentDetailProps> = ({
 
       <div className="agent-detail-content">
         <div className="agent-hero">
-          <div
+          <motion.div
+            layoutId={`card-icon-${agent.id}`}
             className="agent-hero-icon"
             style={{ backgroundColor: agent.imageUrl }}
           >
             <Icon size={48} className="text-white" />
-          </div>
+          </motion.div>
           <div className="agent-hero-info">
             <h1 className="agent-title">{agent.title}</h1>
             <p className="agent-subtitle">Hospitality AI Agent</p>

@@ -80,6 +80,7 @@
 }
 
 @keyframes float {
+
   0%,
   100% {
     transform: translate(0, 0) scale(1);
@@ -128,6 +129,7 @@
 }
 
 @keyframes sparkle {
+
   0%,
   100% {
     transform: scale(1) rotate(0deg);
@@ -150,13 +152,11 @@
 
 .hero-title-highlight {
   display: block;
-  background: linear-gradient(
-    135deg,
-    #ff6b35 0%,
-    #f59e0b 40%,
-    #00b894 80%,
-    #0984e3 100%
-  );
+  background: linear-gradient(135deg,
+      #ff6b35 0%,
+      #f59e0b 40%,
+      #00b894 80%,
+      #0984e3 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -165,6 +165,7 @@
 }
 
 @keyframes gradient-shift {
+
   0%,
   100% {
     background-position: 0% center;
@@ -228,12 +229,10 @@
 .hero-stat-divider {
   width: 1px;
   height: 40px;
-  background: linear-gradient(
-    180deg,
-    transparent,
-    rgba(0, 0, 0, 0.1),
-    transparent
-  );
+  background: linear-gradient(180deg,
+      transparent,
+      rgba(0, 0, 0, 0.1),
+      transparent);
 }
 
 /* ===== Categories Container ===== */
@@ -365,6 +364,7 @@
     transform: translateY(10px) scale(0.99);
     filter: blur(8px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0) scale(1);
@@ -495,11 +495,25 @@
   padding: 3rem 2rem;
 }
 
-/* ===== Agent Detail Wrapper ===== */
-.agent-detail-wrapper {
-  animation: fadeIn 0.5s ease-out;
-  width: 100%;
-  min-height: 100vh;
+/* ===== Agent Detail Overlay ===== */
+.agent-detail-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(15, 23, 42, 0.4);
+  z-index: 2000;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.agent-detail-modal-wrapper {
+  display: contents;
 }
 
 /* ===== Animations ===== */
