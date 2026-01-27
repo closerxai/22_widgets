@@ -128,6 +128,7 @@ export const mockCards: CardInterface[] = [
     agent_code: "d5b7c632-0eb9-4045-bf90-d00946ea44f1",
     category: "in-stay",
   },
+  /*
   {
     id: 9,
     title: "Bellboy & Luggage",
@@ -139,6 +140,7 @@ export const mockCards: CardInterface[] = [
     agent_code: "3ea412e0-a030-41c9-90fa-1790b7ab3ec0",
     category: "in-stay",
   },
+  */
   {
     id: 10,
     title: "F&B Ordering",
@@ -161,6 +163,7 @@ export const mockCards: CardInterface[] = [
     agent_code: "c1928b1a-a847-41dd-8723-e90849377482",
     category: "in-stay",
   },
+  /*
   {
     id: 12,
     title: "Complaint Handling",
@@ -172,6 +175,7 @@ export const mockCards: CardInterface[] = [
     agent_code: "4e4bff56-1f71-446b-b785-062aac1000dc",
     category: "in-stay",
   },
+  */
   {
     id: 13,
     title: "Spa & Wellness",
@@ -183,6 +187,7 @@ export const mockCards: CardInterface[] = [
     agent_code: "56204e90-621f-4166-a80c-7b3ca204cbaf",
     category: "in-stay",
   },
+  /*
   {
     id: 14,
     title: "Restaurant Reservations",
@@ -194,6 +199,7 @@ export const mockCards: CardInterface[] = [
     agent_code: "f2efe7f5-7a33-4a8c-87d6-e0c37fea5949",
     category: "in-stay",
   },
+  */
 
   // ============================================
   // DEPARTURE SERVICES
@@ -218,6 +224,17 @@ export const mockCards: CardInterface[] = [
     icon: Car,
     tags: ["Transport", "Transfers"],
     agent_code: "4da5d625-9d20-4536-8e67-ccaec51f3a1f",
+    category: "departure",
+  },
+  {
+    id: 25,
+    title: "Bellboy & Luggage",
+    route: "bellboy",
+    description: "Departure luggage assistance & storage",
+    imageUrl: "#9C27B0",
+    icon: Truck,
+    tags: ["Bellboy", "Luggage"],
+    agent_code: "3ea412e0-a030-41c9-90fa-1790b7ab3ec0",
     category: "departure",
   },
 
