@@ -34,7 +34,7 @@ export const mockCards: CardInterface[] = [
   // ============================================
   {
     id: 1,
-    title: "Central Reservations",
+    title: "Reservation Agent",
     route: "central-reservations",
     description: "Booking inquiries, rate checks, availability searches",
     imageUrl: "#FF7043",
@@ -123,7 +123,7 @@ export const mockCards: CardInterface[] = [
   // ============================================
   {
     id: 8,
-    title: "Housekeeping Concierge",
+    title: "Guest Concierge",
     route: "housekeeping",
     description: "Cleaning status, room requests",
     imageUrl: "#2196F3",
@@ -134,7 +134,7 @@ export const mockCards: CardInterface[] = [
     schema_name: "09483b13-47ac-47b2-95cf-4ca89b3debfa",
     category: "in-stay",
   },
-  /*
+
   {
     id: 9,
     title: "Bellboy & Luggage",
@@ -146,10 +146,10 @@ export const mockCards: CardInterface[] = [
     agent_code: "3ea412e0-a030-41c9-90fa-1790b7ab3ec0",
     category: "in-stay",
   },
-  */
+
   {
     id: 10,
-    title: "F&B Ordering",
+    title: "Foods and Beverages",
     route: "room-service",
     description: "In-room dining & orders",
     imageUrl: "#2196F3",
@@ -162,7 +162,7 @@ export const mockCards: CardInterface[] = [
   },
   {
     id: 11,
-    title: "Travel Desk & City Guide",
+    title: "Travel Agent",
     route: "travel-desk",
     description: "Tours, attractions, local tips",
     imageUrl: "#2196F3",
@@ -173,7 +173,7 @@ export const mockCards: CardInterface[] = [
     schema_name: "09483b13-47ac-47b2-95cf-4ca89b3debfa",
     category: "in-stay",
   },
-  /*
+
   {
     id: 12,
     title: "Complaint Handling",
@@ -185,7 +185,7 @@ export const mockCards: CardInterface[] = [
     agent_code: "4e4bff56-1f71-446b-b785-062aac1000dc",
     category: "in-stay",
   },
-  */
+
   {
     id: 13,
     title: "Spa & Wellness",
@@ -197,7 +197,7 @@ export const mockCards: CardInterface[] = [
     agent_code: "56204e90-621f-4166-a80c-7b3ca204cbaf",
     category: "in-stay",
   },
-  /*
+
   {
     id: 14,
     title: "Restaurant Reservations",
@@ -209,7 +209,7 @@ export const mockCards: CardInterface[] = [
     agent_code: "f2efe7f5-7a33-4a8c-87d6-e0c37fea5949",
     category: "in-stay",
   },
-  */
+
 
   // ============================================
   // DEPARTURE SERVICES

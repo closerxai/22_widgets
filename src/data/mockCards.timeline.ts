@@ -34,7 +34,7 @@ export const mockCards: CardInterface[] = [
   // ============================================
   {
     id: 1,
-    title: "Central Reservations",
+    title: "Reservation Agent",
     route: "central-reservations",
     description: "Booking inquiries, rate checks, availability searches",
     imageUrl: "#FF7043",
@@ -119,7 +119,7 @@ export const mockCards: CardInterface[] = [
   // ============================================
   {
     id: 8,
-    title: "Housekeeping Concierge",
+    title: "Guest Concierge",
     route: "housekeeping",
     description: "Cleaning status, room requests",
     imageUrl: "#2196F3",
@@ -141,7 +141,7 @@ export const mockCards: CardInterface[] = [
   },
   {
     id: 10,
-    title: "F&B Ordering",
+    title: "Foods and Beverages",
     route: "room-service",
     description: "In-room dining & orders",
     imageUrl: "#2196F3",
@@ -152,7 +152,7 @@ export const mockCards: CardInterface[] = [
   },
   {
     id: 11,
-    title: "Travel Desk & City Guide",
+    title: "Travel Agent",
     route: "travel-desk",
     description: "Tours, attractions, local tips",
     imageUrl: "#2196F3",

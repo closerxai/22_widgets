@@ -1,7 +1,8 @@
-import React, { useState } from "react";
-import { Sparkles } from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion";
-import { categoryConfig } from "./CardGrid.constants";
+import React from "react";
+import { motion } from "framer-motion";
+// import { Sparkles } from "lucide-react";
+// import { AnimatePresence } from "framer-motion";
+// import { categoryConfig } from "./CardGrid.constants";
 
 interface HeroSectionProps {
   totalAgents: number;
@@ -9,40 +10,32 @@ interface HeroSectionProps {
   activeColor?: string;
 }
 
-export const HeroSection: React.FC<HeroSectionProps> = ({
-  totalAgents,
-  activeCategory,
-  activeColor,
-}) => {
-  const [isHovered, setIsHovered] = useState(false);
+export const HeroSection: React.FC<HeroSectionProps> = () => {
+  // const [isHovered, setIsHovered] = useState(false);
 
-  // Get current category theme
-  const theme = activeCategory
-    ? categoryConfig[activeCategory as keyof typeof categoryConfig]
-    : null;
+  // // Get current category theme
+  // const theme = activeCategory
+  //   ? categoryConfig[activeCategory as keyof typeof categoryConfig]
+  //   : null;
 
-  const badgeStyle = theme
-    ? {
-      background: theme.gradient,
-      boxShadow: `0 8px 25px ${theme.color}33`,
-    }
-    : {};
+  // const badgeStyle = theme
+  //   ? {
+  //     background: theme.gradient,
+  //     boxShadow: `0 8px 25px ${theme.color}33`,
+  //   }
+  //   : {};
 
   return (
     <div className="hero-section">
-      <div className="hero-background">
-        <div className="hero-gradient-orb orb-1"></div>
-        <div className="hero-gradient-orb orb-2"></div>
-        <div className="hero-gradient-orb orb-3"></div>
-      </div>
+
       <motion.div
         layout
         className="hero-content"
-        onMouseEnter={() => setIsHovered(true)}
-        onMouseLeave={() => setIsHovered(false)}
+        // onMouseEnter={() => setIsHovered(true)}
+        // onMouseLeave={() => setIsHovered(false)}
         style={{ display: "flex", flexDirection: "column", alignItems: "center" }}
       >
-        <AnimatePresence>
+        {/* <AnimatePresence>
           {isHovered && (
             <motion.div
               layout
@@ -63,7 +56,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
               </div>
             </motion.div>
           )}
-        </AnimatePresence>
+        </AnimatePresence> */}
 
         <motion.h1
           layout
@@ -74,7 +67,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
           <span className="hero-title-highlight"> Across All Touch Points</span>
         </motion.h1>
 
-        <AnimatePresence>
+        {/* <AnimatePresence>
           {isHovered && (
             <motion.div
               layout
@@ -112,7 +105,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
               </div>
             </motion.div>
           )}
-        </AnimatePresence>
+        </AnimatePresence> */}
       </motion.div>
     </div>
   );
