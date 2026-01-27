@@ -13,8 +13,6 @@
 .card-grid-wrapper {
   width: 100%;
   max-width: 100%;
-  min-height: 100vh;
-  min-height: 100dvh;
   background: color-mix(in srgb, var(--active-accent, #f1f5f9) 6%, #ffffff);
   position: relative;
   overflow-x: hidden;

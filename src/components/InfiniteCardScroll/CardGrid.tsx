@@ -38,6 +38,7 @@ export const CardGrid: React.FC<CardGridProps> = memo(
     );
     const [agentName, setAgentName] = useState<string | null>(null);
     const cardRefs = useRef<{ [key: string]: HTMLDivElement | null }>({});
+    const wrapperRef = useRef<HTMLDivElement>(null);
 
     // Group cards by category
     const groupedCards = useMemo(() => {
@@ -136,6 +137,31 @@ export const CardGrid: React.FC<CardGridProps> = memo(
       };
     }, [selectedAgent]);
 
+    // Report height to parent window (GHL/Widget resizing)
+    useEffect(() => {
+      if (!wrapperRef.current) return;
+
+      const resizeObserver = new ResizeObserver((entries) => {
+        for (const entry of entries) {
+          const height = entry.contentRect.height;
+          window.parent.postMessage(
+            {
+              type: "setHeight",
+              height: height,
+              source: "22-widgets",
+            },
+            "*"
+          );
+        }
+      });
+
+      resizeObserver.observe(wrapperRef.current);
+
+      return () => {
+        resizeObserver.disconnect();
+      };
+    }, []);
+
     // Main Grid Rendering
     const activeColor = activeCategory
       ? categoryConfig[activeCategory]?.color
@@ -143,6 +169,7 @@ export const CardGrid: React.FC<CardGridProps> = memo(
 
     return (
       <div
+        ref={wrapperRef}
         className={`card-grid-wrapper ${className}`}
         style={{ "--active-accent": activeColor } as React.CSSProperties}
       >

@@ -89,7 +89,7 @@ function App() {
 
   return (
     <NavigationProvider>
-      <div className="min-h-screen bg-background">
+      <div className="bg-background">
         {/* <Navbar /> */}
         <main className="">
           <div className="max-w-10xl mx-auto">
