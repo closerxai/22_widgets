@@ -146,7 +146,11 @@ export const CardGrid: React.FC<CardGridProps> = memo(
         className={`card-grid-wrapper ${className}`}
         style={{ "--active-accent": activeColor } as React.CSSProperties}
       >
-        <HeroSection totalAgents={cards.length} />
+        <HeroSection
+          totalAgents={cards.length}
+          activeCategory={activeCategory}
+          activeColor={activeColor}
+        />
 
         {showRealEstateAgentVoice && !selectedAgent && (
           <RealEstateAgentVoice

@@ -27,8 +27,9 @@
 .hero-section {
   position: relative;
   width: 100%;
-  padding: 5rem 2rem 4rem;
-  background: #ffffff;
+  padding: 2.5rem 2rem 4rem;
+  background: color-mix(in srgb, var(--active-accent, #f1f5f9) 12%, #ffffff);
+  transition: background 0.6s cubic-bezier(0.4, 0, 0.2, 1);
   overflow: hidden;
   border-bottom: 1px solid #e2e8f0;
 }
@@ -117,7 +118,7 @@
   color: #fff;
   font-size: 0.9rem;
   font-weight: 600;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
   animation: fadeInDown 0.8s ease-out;
   box-shadow: 0 8px 25px rgba(255, 107, 53, 0.35);
   letter-spacing: 0.02em;
@@ -179,10 +180,9 @@
 .hero-subtitle {
   font-size: clamp(1rem, 2vw, 1.35rem);
   color: #475569;
-  margin: 0 auto 3rem;
+  margin: 1rem auto 1.5rem;
   line-height: 1.7;
   max-width: 650px;
-  animation: fadeInUp 0.8s ease-out 0.2s both;
   font-weight: 400;
 }
 
@@ -191,7 +191,7 @@
   justify-content: center;
   align-items: center;
   gap: 2.5rem;
-  animation: fadeInUp 0.8s ease-out 0.3s both;
+  margin-top: 0;
   background: rgba(255, 255, 255, 0.4);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
@@ -606,7 +606,7 @@
 
 @media (max-width: 768px) {
   .hero-section {
-    padding: 3rem 1rem 2.5rem;
+    padding: 1.5rem 1rem 2.5rem;
   }
 
   .hero-badge {
@@ -680,7 +680,7 @@
 
 @media (max-width: 480px) {
   .hero-section {
-    padding: 2.5rem 1rem 2rem;
+    padding: 1rem 1rem 2rem;
   }
 
   .hero-badge {
