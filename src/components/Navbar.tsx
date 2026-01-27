@@ -99,7 +99,7 @@ export const Navbar: React.FC = () => {
                             {activeSection === link.href && (
                                 <motion.span
                                     layoutId="activePill"
-                                    className="absolute inset-0 bg-background rounded-full -z-10 shadow-sm border border-foreground/5"
+                                    className="absolute inset-0 bg-primary/10 rounded-full -z-10 shadow-sm border border-primary/20"
                                     transition={{ type: "spring", stiffness: 300, damping: 30 }}
                                 />
                             )}
