@@ -1,5 +1,6 @@
 import { Plane, LogIn, Home, LogOut, Star, Briefcase } from "lucide-react";
 import React from "react";
+import type { Category } from "../../types";
 
 export interface CategoryConfig {
   label: string;
@@ -10,7 +11,7 @@ export interface CategoryConfig {
   description: string;
 }
 
-export const categoryConfig: Record<string, CategoryConfig> = {
+export const categoryConfig = {
   "pre-arrival": {
     label: "Pre-Arrival",
     color: "#FF6B35",
@@ -35,8 +36,8 @@ export const categoryConfig: Record<string, CategoryConfig> = {
     icon: Home,
     description: "Enhance the guest experience",
   },
-  "pre-departure": {
-    label: "Pre-Departure",
+  departure: {
+    label: "Departure",
     color: "#A855F7",
     gradient: "linear-gradient(135deg, #A855F7 0%, #C084FC 100%)",
     lightBg: "rgba(168, 85, 247, 0.08)",
@@ -59,13 +60,13 @@ export const categoryConfig: Record<string, CategoryConfig> = {
     icon: Briefcase,
     description: "Operational excellence",
   },
-};
+} as const;
 
-export const categoryOrder = [
+export const categoryOrder: Category[] = [
   "pre-arrival",
   "arrival",
   "in-stay",
-  "pre-departure",
+  "departure",
   "post-stay",
   "back-office",
 ];

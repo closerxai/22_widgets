@@ -26,15 +26,7 @@ import {
   MessageSquare,
 } from "lucide-react";
 
-// Service Categories
-export const SERVICE_CATEGORIES = {
-  PRE_ARRIVAL: "pre-arrival",
-  ARRIVAL: "arrival",
-  IN_STAY: "in-stay",
-  PRE_DEPARTURE: "pre-departure",
-  POST_STAY: "post-stay",
-  BACK_OFFICE: "back-office",
-} as const;
+// No longer need SERVICE_CATEGORIES constant as we use type-safe strings
 
 export const mockCards: CardInterface[] = [
   // ============================================
@@ -49,7 +41,7 @@ export const mockCards: CardInterface[] = [
     icon: Phone,
     tags: ["Reservations", "Booking"],
     agent_code: "b1638df3-d06a-42cf-b1d3-a3191fcc2ad3",
-    category: SERVICE_CATEGORIES.PRE_ARRIVAL,
+    category: "pre-arrival",
   },
   {
     id: 2,
@@ -60,7 +52,7 @@ export const mockCards: CardInterface[] = [
     icon: ArrowUpCircle,
     tags: ["Revenue", "Upsell"],
     agent_code: "a2f0cb0d-77ca-4836-b3d7-d8198863d0ed",
-    category: SERVICE_CATEGORIES.PRE_ARRIVAL,
+    category: "pre-arrival",
   },
   {
     id: 3,
@@ -71,7 +63,7 @@ export const mockCards: CardInterface[] = [
     icon: ConciergeBell,
     tags: ["Concierge", "Guest Services"],
     agent_code: "b5b84819-3780-48ca-87ac-e137073bbd84",
-    category: SERVICE_CATEGORIES.PRE_ARRIVAL,
+    category: "pre-arrival",
   },
   {
     id: 4,
@@ -82,7 +74,7 @@ export const mockCards: CardInterface[] = [
     icon: ShieldCheck,
     tags: ["Security", "Compliance"],
     agent_code: "6204c40c-d367-49f0-96c2-752c9d06eca2",
-    category: SERVICE_CATEGORIES.PRE_ARRIVAL,
+    category: "pre-arrival",
   },
 
   // ============================================
@@ -97,7 +89,7 @@ export const mockCards: CardInterface[] = [
     icon: CalendarCheck,
     tags: ["Front Desk", "Check-in"],
     agent_code: "d3e90f97-1db9-48b9-9330-06b1c5da0b82",
-    category: SERVICE_CATEGORIES.ARRIVAL,
+    category: "arrival",
   },
   {
     id: 6,
@@ -108,7 +100,7 @@ export const mockCards: CardInterface[] = [
     icon: UserCheck,
     tags: ["Efficiency", "Queue"],
     agent_code: "c720dc14-5f6a-41c6-9351-7058a359f536",
-    category: SERVICE_CATEGORIES.ARRIVAL,
+    category: "arrival",
   },
   {
     id: 7,
@@ -119,7 +111,7 @@ export const mockCards: CardInterface[] = [
     icon: MessageSquare,
     tags: ["Info", "Support"],
     agent_code: "eedf33bd-858b-43d7-ab81-939a682185f7",
-    category: SERVICE_CATEGORIES.ARRIVAL,
+    category: "arrival",
   },
 
   // ============================================
@@ -134,7 +126,7 @@ export const mockCards: CardInterface[] = [
     icon: Bed,
     tags: ["Housekeeping", "Rooms"],
     agent_code: "d5b7c632-0eb9-4045-bf90-d00946ea44f1",
-    category: SERVICE_CATEGORIES.IN_STAY,
+    category: "in-stay",
   },
   {
     id: 9,
@@ -145,7 +137,7 @@ export const mockCards: CardInterface[] = [
     icon: Truck,
     tags: ["Bellboy", "Luggage"],
     agent_code: "3ea412e0-a030-41c9-90fa-1790b7ab3ec0",
-    category: SERVICE_CATEGORIES.IN_STAY,
+    category: "in-stay",
   },
   {
     id: 10,
@@ -156,7 +148,7 @@ export const mockCards: CardInterface[] = [
     icon: Utensils,
     tags: ["F&B", "In-Room"],
     agent_code: "cf3bc5d5-11fe-4fec-8958-cca00dd259a4",
-    category: SERVICE_CATEGORIES.IN_STAY,
+    category: "in-stay",
   },
   {
     id: 11,
@@ -167,7 +159,7 @@ export const mockCards: CardInterface[] = [
     icon: MapPin,
     tags: ["Travel", "Tours"],
     agent_code: "c1928b1a-a847-41dd-8723-e90849377482",
-    category: SERVICE_CATEGORIES.IN_STAY,
+    category: "in-stay",
   },
   {
     id: 12,
@@ -178,7 +170,7 @@ export const mockCards: CardInterface[] = [
     icon: AlertTriangle,
     tags: ["Complaints", "Support"],
     agent_code: "4e4bff56-1f71-446b-b785-062aac1000dc",
-    category: SERVICE_CATEGORIES.IN_STAY,
+    category: "in-stay",
   },
   {
     id: 13,
@@ -189,7 +181,7 @@ export const mockCards: CardInterface[] = [
     icon: HeartHandshake,
     tags: ["Spa", "Wellness"],
     agent_code: "56204e90-621f-4166-a80c-7b3ca204cbaf",
-    category: SERVICE_CATEGORIES.IN_STAY,
+    category: "in-stay",
   },
   {
     id: 14,
@@ -200,11 +192,11 @@ export const mockCards: CardInterface[] = [
     icon: Wine,
     tags: ["Dining", "Restaurants"],
     agent_code: "f2efe7f5-7a33-4a8c-87d6-e0c37fea5949",
-    category: SERVICE_CATEGORIES.IN_STAY,
+    category: "in-stay",
   },
 
   // ============================================
-  // PRE-DEPARTURE SERVICES
+  // DEPARTURE SERVICES
   // ============================================
   {
     id: 15,
@@ -215,7 +207,7 @@ export const mockCards: CardInterface[] = [
     icon: CreditCard,
     tags: ["Checkout", "Billing"],
     agent_code: "f6d8a9a5-cee2-4197-bf7f-d8f9e7a99c73",
-    category: SERVICE_CATEGORIES.PRE_DEPARTURE,
+    category: "departure",
   },
   {
     id: 16,
@@ -226,7 +218,7 @@ export const mockCards: CardInterface[] = [
     icon: Car,
     tags: ["Transport", "Transfers"],
     agent_code: "4da5d625-9d20-4536-8e67-ccaec51f3a1f",
-    category: SERVICE_CATEGORIES.PRE_DEPARTURE,
+    category: "departure",
   },
 
   // ============================================
@@ -241,7 +233,7 @@ export const mockCards: CardInterface[] = [
     icon: Star,
     tags: ["Reviews", "Feedback"],
     agent_code: "5e82b5a9-90e2-4689-822c-d261dc4af3f8",
-    category: SERVICE_CATEGORIES.POST_STAY,
+    category: "post-stay",
   },
   {
     id: 18,
@@ -252,7 +244,7 @@ export const mockCards: CardInterface[] = [
     icon: Home,
     tags: ["Feedback", "Surveys"],
     agent_code: "30a0f7a9-0aef-4f80-9105-a439e05f812f",
-    category: SERVICE_CATEGORIES.POST_STAY,
+    category: "post-stay",
   },
   {
     id: 19,
@@ -263,7 +255,7 @@ export const mockCards: CardInterface[] = [
     icon: Megaphone,
     tags: ["Loyalty", "Marketing"],
     agent_code: "56ed8043-289c-46bc-a768-3c81e8819ce3",
-    category: SERVICE_CATEGORIES.POST_STAY,
+    category: "post-stay",
   },
 
   // ============================================
@@ -278,7 +270,7 @@ export const mockCards: CardInterface[] = [
     icon: UsersRound,
     tags: ["Events", "Banquet"],
     agent_code: "665de823-76b2-4e6b-a5a6-206e9c5a474e",
-    category: SERVICE_CATEGORIES.BACK_OFFICE,
+    category: "back-office",
   },
   {
     id: 21,
@@ -289,7 +281,7 @@ export const mockCards: CardInterface[] = [
     icon: Building2,
     tags: ["Groups", "Corporate"],
     agent_code: "d7730ad0-f952-4b45-ac1e-47b5f98f1d67",
-    category: SERVICE_CATEGORIES.BACK_OFFICE,
+    category: "back-office",
   },
   {
     id: 22,
@@ -300,7 +292,7 @@ export const mockCards: CardInterface[] = [
     icon: Plane,
     tags: ["Partners", "OTA"],
     agent_code: "af8b4f5f-42f9-42c2-b14a-9681f24d4b6a",
-    category: SERVICE_CATEGORIES.BACK_OFFICE,
+    category: "back-office",
   },
   {
     id: 23,
@@ -311,7 +303,7 @@ export const mockCards: CardInterface[] = [
     icon: Briefcase,
     tags: ["HR", "Recruitment"],
     agent_code: "e8a84644-ce71-43ac-85c8-9f692a6a44ed",
-    category: SERVICE_CATEGORIES.BACK_OFFICE,
+    category: "back-office",
   },
   {
     id: 24,
@@ -322,6 +314,6 @@ export const mockCards: CardInterface[] = [
     icon: Wrench,
     tags: ["Maintenance", "Engineering"],
     agent_code: "b4cc564c-dadc-4e37-bb2f-1e7ecb3a2024",
-    category: SERVICE_CATEGORIES.BACK_OFFICE,
+    category: "back-office",
   },
 ];

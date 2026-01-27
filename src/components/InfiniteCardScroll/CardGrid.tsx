@@ -109,7 +109,7 @@ export const CardGrid: React.FC<CardGridProps> = memo(
           handleStart={handleStart}
           handleEnd={handleEnd}
           getAgentName={setAgentName}
-          onAgentSelect={() => {}}
+          onAgentSelect={() => { }}
         />
       </div>
     );
@@ -157,8 +157,8 @@ export const CardGrid: React.FC<CardGridProps> = memo(
             anchorElement={
               agentName
                 ? cardRefs.current[
-                    cards.find((c) => c.title === agentName)?.id || ""
-                  ] || null
+                cards.find((c) => c.title === agentName)?.id || ""
+                ] || null
                 : null
             }
           />
@@ -179,7 +179,7 @@ export const CardGrid: React.FC<CardGridProps> = memo(
                 key={activeCategory}
                 category={activeCategory}
                 categoryCards={groupedCards[activeCategory]}
-                sectionRef={() => {}} // No ref needed for single section rendering
+                sectionRef={() => { }} // No ref needed for single section rendering
                 renderCard={renderCard}
               />
             )}

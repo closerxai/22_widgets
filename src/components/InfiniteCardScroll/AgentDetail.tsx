@@ -25,7 +25,7 @@ const agentDetails: Record<string, {
   // ============================================
   // PRE-ARRIVAL AGENTS
   // ============================================
-  "Central Reservations": {
+  "central-reservations": {
     fullDescription: "AI-powered central reservations agent handling booking inquiries, rate checks, availability searches, and reservation modifications across all channels in real time. Seamlessly integrates with your PMS to provide instant, accurate responses.",
     features: [
       "Multi-channel booking sync",
@@ -47,7 +47,7 @@ const agentDetails: Record<string, {
       metric: "18,500+ Bookings"
     }
   },
-  "Upselling & Promotions": {
+  "upselling": {
     fullDescription: "Intelligent upselling agent that identifies opportunities to enhance guest stays with room upgrades, breakfast packages, transfers, and special add-ons. Uses guest history and preferences to make personalized recommendations.",
     features: [
       "Smart upgrade recommendations",
@@ -69,7 +69,7 @@ const agentDetails: Record<string, {
       metric: "32% Conversion Rate"
     }
   },
-  "Pre-Check-in Concierge": {
+  "concierge": {
     fullDescription: "Your 24/7 virtual concierge providing local recommendations, activity bookings, restaurant suggestions, and personalized guest experiences before arrival. Helps guests plan their perfect stay.",
     features: [
       "Local attraction knowledge",
@@ -91,7 +91,7 @@ const agentDetails: Record<string, {
       metric: "9,800+ Recommendations"
     }
   },
-  "Document Pre-Verification": {
+  "verification": {
     fullDescription: "Streamlines guest identity verification and document collection before arrival. Handles KYC requirements, ID uploads, and registration form pre-filling for a smooth check-in experience.",
     features: [
       "ID document scanning & OCR",
@@ -117,7 +117,7 @@ const agentDetails: Record<string, {
   // ============================================
   // ARRIVAL AGENTS
   // ============================================
-  "Check-In Agent": {
+  "front-office": {
     fullDescription: "Streamlines the check-in process with digital coordination, room assignment optimization, and instant guest profiling. Reduces wait times and ensures a warm, efficient welcome.",
     features: [
       "Digital check-in/out",
@@ -139,7 +139,7 @@ const agentDetails: Record<string, {
       metric: "12,000+ Check-ins"
     }
   },
-  "Queue Reduction": {
+  "queue": {
     fullDescription: "Intelligent queue management system that reduces front desk waiting times through express check-in options, self-service kiosks coordination, and smart guest flow optimization.",
     features: [
       "Real-time queue monitoring",
@@ -161,7 +161,7 @@ const agentDetails: Record<string, {
       metric: "67% Wait Reduction"
     }
   },
-  "Instant Information": {
+  "info": {
     fullDescription: "Provides immediate answers to common guest questions about WiFi, amenities, hotel facilities, and services. Available 24/7 to ensure guests have all the information they need.",
     features: [
       "WiFi credentials delivery",
@@ -187,7 +187,7 @@ const agentDetails: Record<string, {
   // ============================================
   // IN-STAY AGENTS
   // ============================================
-  "Housekeeping Concierge": {
+  "housekeeping": {
     fullDescription: "Real-time housekeeping coordination ensuring rooms are cleaned, inspected, and ready on time. Handles guest requests for extra amenities, turn-down service, and maintenance flagging.",
     features: [
       "Room status updates (Dirty/Clean/Inspected)",
@@ -209,7 +209,7 @@ const agentDetails: Record<string, {
       metric: "45,000+ Rooms"
     }
   },
-  "Bellboy & Luggage": {
+  "bellboy": {
     fullDescription: "Coordinates luggage assistance, storage, and delivery services. Manages bellboy dispatching and ensures guests' belongings are handled with care and efficiency.",
     features: [
       "Luggage pickup requests",
@@ -231,7 +231,7 @@ const agentDetails: Record<string, {
       metric: "8,500+ Requests"
     }
   },
-  "F&B Ordering": {
+  "room-service": {
     fullDescription: "Delight guests with seamless in-room dining. Takes orders, confirms dietary needs, estimates delivery time, and processes payments for a complete room service experience.",
     features: [
       "Full menu navigation",
@@ -253,7 +253,7 @@ const agentDetails: Record<string, {
       metric: "11,200+ Orders"
     }
   },
-  "Travel Desk & City Guide": {
+  "travel-desk": {
     fullDescription: "Your guests' personal travel advisor providing local recommendations, tour bookings, attraction tickets, and insider tips to make their stay memorable.",
     features: [
       "Local attraction recommendations",
@@ -275,7 +275,7 @@ const agentDetails: Record<string, {
       metric: "6,800+ Bookings"
     }
   },
-  "Complaint Handling": {
+  "complaints": {
     fullDescription: "Professional complaint resolution system that addresses guest concerns promptly, escalates issues appropriately, and ensures service recovery to maintain guest satisfaction.",
     features: [
       "Issue categorization",
@@ -297,7 +297,7 @@ const agentDetails: Record<string, {
       metric: "92% Resolution Rate"
     }
   },
-  "Spa & Wellness": {
+  "spa-wellness": {
     fullDescription: "Full spa booking system handling treatments, therapist preferences, packages, and wellness program enrollments. Creates relaxing experiences for your guests.",
     features: [
       "Treatment menu navigation",
@@ -319,7 +319,7 @@ const agentDetails: Record<string, {
       metric: "8,700+ Appointments"
     }
   },
-  "Restaurant Reservations": {
+  "dining-reservations": {
     fullDescription: "Manages table reservations, waitlists, special requests, and dining preferences across all hotel restaurants and outlets for seamless dining experiences.",
     features: [
       "Table availability lookup",
@@ -343,9 +343,9 @@ const agentDetails: Record<string, {
   },
 
   // ============================================
-  // PRE-DEPARTURE AGENTS
+  // DEPARTURE AGENTS
   // ============================================
-  "Checkout Coordination": {
+  "checkout": {
     fullDescription: "Streamlines the checkout process with express options, folio review, billing clarification, and payment processing. Ensures guests leave with a positive final impression.",
     features: [
       "Express checkout options",
@@ -367,7 +367,7 @@ const agentDetails: Record<string, {
       metric: "14,200+ Checkouts"
     }
   },
-  "Transport Booking": {
+  "transportation": {
     fullDescription: "Coordinates airport transfers, taxi bookings, car rentals, and local transportation for departing guests. Ensures smooth transitions from hotel to destination.",
     features: [
       "Airport transfer scheduling",
@@ -393,7 +393,7 @@ const agentDetails: Record<string, {
   // ============================================
   // POST-STAY AGENTS
   // ============================================
-  "Reviews Collection": {
+  "reviews": {
     fullDescription: "Proactively collects guest reviews and testimonials after checkout. Encourages satisfied guests to share their experiences on major review platforms.",
     features: [
       "Automated review requests",
@@ -415,7 +415,7 @@ const agentDetails: Record<string, {
       metric: "4,200+ Reviews"
     }
   },
-  "Feedback Management": {
+  "feedback": {
     fullDescription: "Comprehensive feedback collection and analysis system. Sends surveys, tracks satisfaction scores, and provides insights for service improvement.",
     features: [
       "Survey design & delivery",
@@ -437,7 +437,7 @@ const agentDetails: Record<string, {
       metric: "38% Response Rate"
     }
   },
-  "Re-activation & Loyalty": {
+  "loyalty": {
     fullDescription: "Manages loyalty program support, member benefits, and re-engagement campaigns. Brings guests back with personalized offers and reward redemptions.",
     features: [
       "Member lookup & verification",
@@ -463,7 +463,7 @@ const agentDetails: Record<string, {
   // ============================================
   // BACK OFFICE AGENTS
   // ============================================
-  "Banquet & Event Sales": {
+  "banquet-events": {
     fullDescription: "Drives banquet inquiries, venue tours, menu customization, and contract generation for weddings, conferences, and private events. Your event sales assistant.",
     features: [
       "Venue capacity & layout info",
@@ -485,7 +485,7 @@ const agentDetails: Record<string, {
       metric: "1,900+ Events"
     }
   },
-  "Corporate & Group Sales": {
+  "corporate-group": {
     fullDescription: "Specialized in corporate accounts, group blocks, meeting packages, and negotiated rates. Provides dedicated account management for your top clients.",
     features: [
       "Corporate rate negotiation",
@@ -507,7 +507,7 @@ const agentDetails: Record<string, {
       metric: "680+ Contracts"
     }
   },
-  "OTA Partner Relations": {
+  "ota-relations": {
     fullDescription: "Dedicated support for travel agents, OTAs, and wholesalers. Handles commissions, allocations, rate loading, and partner inquiries professionally.",
     features: [
       "Agent portal support",
@@ -529,7 +529,7 @@ const agentDetails: Record<string, {
       metric: "1,100+ Partners"
     }
   },
-  "Human Resources": {
+  "hr": {
     fullDescription: "Screens candidates, schedules interviews, conducts initial assessments, and supports hotel staffing needs. Streamlines your recruitment process.",
     features: [
       "Resume parsing & scoring",
@@ -551,7 +551,7 @@ const agentDetails: Record<string, {
       metric: "5,600+ Candidates"
     }
   },
-  "Engineering & Maintenance": {
+  "maintenance": {
     fullDescription: "Manages maintenance requests, work orders, preventive maintenance schedules, and vendor coordination for smooth hotel operations.",
     features: [
       "Work order management",
@@ -583,7 +583,7 @@ export const AgentDetail: React.FC<AgentDetailProps> = ({
   getAgentName
 }) => {
   const Icon = agent.icon;
-  const details = agentDetails[agent.title];
+  const details = agentDetails[agent.route];
 
   const handleTryDemo = (e: React.MouseEvent) => {
     e.preventDefault();
@@ -597,7 +597,7 @@ export const AgentDetail: React.FC<AgentDetailProps> = ({
     return (
       <div className="agent-detail-container">
         <div className="agent-detail-header">
-          <button 
+          <button
             className="back-button"
             onClick={onBack}
             aria-label="Back to agents"
@@ -608,7 +608,7 @@ export const AgentDetail: React.FC<AgentDetailProps> = ({
         </div>
         <div className="agent-detail-content">
           <div className="agent-hero">
-            <div 
+            <div
               className="agent-hero-icon"
               style={{ backgroundColor: agent.imageUrl }}
             >
@@ -619,7 +619,7 @@ export const AgentDetail: React.FC<AgentDetailProps> = ({
               <p className="agent-subtitle">Hospitality AI Agent</p>
               <p className="agent-description">{agent.description}</p>
             </div>
-            <button 
+            <button
               className="try-demo-hero-button"
               onClick={handleTryDemo}
             >
@@ -639,7 +639,7 @@ export const AgentDetail: React.FC<AgentDetailProps> = ({
   return (
     <div className="agent-detail-container">
       <div className="agent-detail-header">
-        <button 
+        <button
           className="back-button"
           onClick={onBack}
           aria-label="Back to agents"
@@ -651,7 +651,7 @@ export const AgentDetail: React.FC<AgentDetailProps> = ({
 
       <div className="agent-detail-content">
         <div className="agent-hero">
-          <div 
+          <div
             className="agent-hero-icon"
             style={{ backgroundColor: agent.imageUrl }}
           >
@@ -662,7 +662,7 @@ export const AgentDetail: React.FC<AgentDetailProps> = ({
             <p className="agent-subtitle">Hospitality AI Agent</p>
             <p className="agent-description">{agent.description}</p>
           </div>
-          <button 
+          <button
             className="try-demo-hero-button"
             onClick={handleTryDemo}
           >
@@ -732,7 +732,7 @@ export const AgentDetail: React.FC<AgentDetailProps> = ({
         <div className="cta-section">
           <h2>Ready to Transform Your Guest Experience?</h2>
           <p>Start an interactive demo and see how this AI agent works in real hotel scenarios.</p>
-          <button 
+          <button
             className="cta-button"
             onClick={handleTryDemo}
           >

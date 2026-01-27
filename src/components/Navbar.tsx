@@ -5,14 +5,12 @@ import { useNavigation } from "@/contexts/NavigationContext";
 // for now we'll handle it gracefully.
 // import { useWidgetContext } from "@/constexts/WidgetContext"; 
 
-const navLinks = [
-    { href: "#pre-arrival", label: "Pre-Arrival" },
-    { href: "#arrival", label: "Arrival" },
-    { href: "#in-stay", label: "In-Stay" },
-    { href: "#pre-departure", label: "Pre-Departure" },
-    { href: "#post-stay", label: "Post-Stay" },
-    { href: "#back-office", label: "Back Office" },
-];
+import { categoryOrder, categoryConfig } from "./InfiniteCardScroll/CardGrid.constants";
+
+const navLinks = categoryOrder.map(id => ({
+    href: `#${id}`,
+    label: (categoryConfig as any)[id].label
+}));
 
 export const Navbar: React.FC = () => {
     const { navigate, currentPath } = useNavigation();
