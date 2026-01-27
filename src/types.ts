@@ -1,20 +1,12 @@
-```typescript
 import { DivideIcon as LucideIcon } from 'lucide-react';
 
-export type Category = 
-  // Timeline Categories (Legacy/Backup)
+export type Category =
   | "pre-arrival"
   | "arrival"
   | "in-stay"
   | "departure"
   | "post-stay"
-  | "back-office"
-  // Departmental Categories (New)
-  | "reservation-agent"
-  | "food-beverage"
-  | "travel-agent"
-  | "guest-services"
-  | "outbound-ai";
+  | "back-office";
 
 export interface CardInterface {
   id: string | number;
