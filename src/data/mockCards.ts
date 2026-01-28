@@ -13,7 +13,7 @@ import {
   CreditCard,
   Car,
   Wrench,
-  ArrowUpCircle,
+  // ArrowUpCircle,
   Megaphone,
   ShieldCheck,
   UserCheck,
@@ -41,10 +41,11 @@ export const mockCards: CardInterface[] = [
     icon: Phone,
     tags: ["Reservations", "Booking"],
     // agent_code: "b1638df3-d06a-42cf-b1d3-a3191fcc2ad3",
-    agent_code: "d049380d-42aa-40a5-90c3-6e3a7ca87cfb",
+    agent_code: "aff61cd5-1567-4020-8ce7-f270f3693dea",
     schema_name: "09483b13-47ac-47b2-95cf-4ca89b3debfa",
     category: "pre-arrival",
   },
+  /*
   {
     id: 2,
     title: "Upselling & Promotions",
@@ -56,6 +57,7 @@ export const mockCards: CardInterface[] = [
     agent_code: "a2f0cb0d-77ca-4836-b3d7-d8198863d0ed",
     category: "pre-arrival",
   },
+  */
   {
     id: 3,
     title: "Pre-Check-in Concierge",
@@ -64,7 +66,7 @@ export const mockCards: CardInterface[] = [
     imageUrl: "#FF7043",
     icon: ConciergeBell,
     tags: ["Concierge", "Guest Services"],
-    agent_code: "b5b84819-3780-48ca-87ac-e137073bbd84",
+    agent_code: "efc83d6e-a9ea-4b8d-a105-285c56bc68be",
     category: "pre-arrival",
   },
   {
@@ -75,7 +77,7 @@ export const mockCards: CardInterface[] = [
     imageUrl: "#FF7043",
     icon: ShieldCheck,
     tags: ["Security", "Compliance"],
-    agent_code: "6204c40c-d367-49f0-96c2-752c9d06eca2",
+    agent_code: "575ed327-0999-443a-9711-b9c9edd94060",
     category: "pre-arrival",
   },
 
@@ -103,7 +105,7 @@ export const mockCards: CardInterface[] = [
     imageUrl: "#4CAF50",
     icon: UserCheck,
     tags: ["Efficiency", "Queue"],
-    agent_code: "c720dc14-5f6a-41c6-9351-7058a359f536",
+    agent_code: "558306f9-98f6-4f33-acf2-477598087bc8",
     category: "arrival",
   },
   {
@@ -135,6 +137,7 @@ export const mockCards: CardInterface[] = [
     category: "in-stay",
   },
 
+  /*
   {
     id: 9,
     title: "Bellboy & Luggage",
@@ -146,6 +149,7 @@ export const mockCards: CardInterface[] = [
     agent_code: "3ea412e0-a030-41c9-90fa-1790b7ab3ec0",
     category: "in-stay",
   },
+  */
 
   {
     id: 10,
