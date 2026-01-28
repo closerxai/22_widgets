@@ -186,7 +186,7 @@ export const mockCards: CardInterface[] = [
     imageUrl: "#2196F3",
     icon: AlertTriangle,
     tags: ["Complaints", "Support"],
-    agent_code: "4e4bff56-1f71-446b-b785-062aac1000dc",
+    agent_code: "740dbbea-65cd-4f30-9142-29170f089734",
     category: "in-stay",
   },
 
@@ -210,7 +210,7 @@ export const mockCards: CardInterface[] = [
     imageUrl: "#2196F3",
     icon: Wine,
     tags: ["Dining", "Restaurants"],
-    agent_code: "f2efe7f5-7a33-4a8c-87d6-e0c37fea5949",
+    agent_code: "2d7ec9d2-99e7-4e78-a143-144076ad127e",
     category: "in-stay",
   },
 
