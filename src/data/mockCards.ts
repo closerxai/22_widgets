@@ -198,7 +198,7 @@ export const mockCards: CardInterface[] = [
     imageUrl: "#2196F3",
     icon: HeartHandshake,
     tags: ["Spa", "Wellness"],
-    agent_code: "56204e90-621f-4166-a80c-7b3ca204cbaf",
+    agent_code: "f0d636ce-6103-492b-a0b4-16f43aaf9bb9",
     category: "in-stay",
   },
 
