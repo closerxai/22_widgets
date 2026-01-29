@@ -237,7 +237,7 @@ export const mockCards: CardInterface[] = [
     imageUrl: "#9C27B0",
     icon: Car,
     tags: ["Transport", "Transfers"],
-    agent_code: "4da5d625-9d20-4536-8e67-ccaec51f3a1f",
+    agent_code: "19badaa9-a8d5-4993-9009-4414c2485bcf",
     category: "departure",
   },
   {
