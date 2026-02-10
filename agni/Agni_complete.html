@@ -21,6 +21,10 @@
         --serif: "Instrument Serif", Georgia, serif;
         --sans: "DM Sans", system-ui, sans-serif;
         --mono: "JetBrains Mono", monospace;
+        --card-bg: #1e1814;
+        --card-border: #3a2a20;
+        --ember: #e8531e;
+        --fire-gold: #f5a623;
       }
       * {
         margin: 0;
@@ -531,6 +535,22 @@
         z-index: 10;
       }
 
+      /* ── Connected state ── */
+      .widget-card.connected .orb-glow {
+        animation: glowBreathActive 2s ease-in-out infinite;
+      }
+      @keyframes glowBreathActive {
+        0%,
+        100% {
+          opacity: 0.7;
+          transform: scale(1);
+        }
+        50% {
+          opacity: 1;
+          transform: scale(1.12);
+        }
+      }
+
       .widget-tag {
         position: absolute;
         font-family: var(--mono);
@@ -999,6 +1019,348 @@
           text-align: left;
         }
       }
+
+      /* ── Main Widget Card ── */
+      .widget-card {
+        position: relative;
+        z-index: 1;
+        width: 420px;
+        max-width: 94vw;
+        aspect-ratio: 1 / 1.05;
+        background: var(--card-bg);
+        border-radius: 24px;
+        border: 1px solid var(--card-border);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+        box-shadow:
+          0 0 80px rgba(232, 83, 30, 0.08),
+          0 30px 60px rgba(0, 0, 0, 0.5),
+          inset 0 1px 0 rgba(255, 255, 255, 0.03);
+      }
+
+      /* Lava border glow */
+      .widget-card::before {
+        content: "";
+        position: absolute;
+        inset: -2px;
+        border-radius: 26px;
+        background: linear-gradient(
+          135deg,
+          rgba(232, 83, 30, 0.4) 0%,
+          transparent 30%,
+          transparent 70%,
+          rgba(245, 166, 35, 0.3) 100%
+        );
+        z-index: -1;
+        opacity: 0.6;
+      }
+
+      /* Noise texture overlay */
+      .widget-card::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        border-radius: 24px;
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+        pointer-events: none;
+        z-index: 10;
+      }
+
+      /* ── Version label ── */
+      .version-label {
+        position: absolute;
+        top: 24px;
+        left: 28px;
+        font-family: "Rajdhani", sans-serif;
+        font-weight: 500;
+        font-size: 13px;
+        letter-spacing: 3px;
+        color: var(--text-dim);
+        text-transform: uppercase;
+      }
+
+      /* ── LIVE badge ── */
+      .live-badge {
+        position: absolute;
+        bottom: 24px;
+        right: 28px;
+        display: flex;
+        align-items: center;
+        gap: 7px;
+        font-family: "Rajdhani", sans-serif;
+        font-weight: 500;
+        font-size: 13px;
+        letter-spacing: 3px;
+        color: var(--text-dim);
+        text-transform: uppercase;
+        opacity: 0;
+        transition: opacity 0.5s ease;
+      }
+      .live-badge.visible {
+        opacity: 1;
+      }
+
+      .live-dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: #e53935;
+        box-shadow: 0 0 8px #e53935;
+        animation: livePulse 1.5s ease-in-out infinite;
+      }
+
+      @keyframes livePulse {
+        0%,
+        100% {
+          opacity: 1;
+          transform: scale(1);
+        }
+        50% {
+          opacity: 0.5;
+          transform: scale(0.85);
+        }
+      }
+
+      /* ── Orb Container ── */
+      .orb-container {
+        position: relative;
+        width: 220px;
+        height: 220px;
+        cursor: pointer;
+        transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+      }
+      .orb-container:hover {
+        transform: scale(1.04);
+      }
+      .orb-container:active {
+        transform: scale(0.97);
+      }
+
+      /* Glass orb shell */
+      .orb-shell {
+        position: absolute;
+        inset: 0;
+        border-radius: 50%;
+        background: radial-gradient(
+          circle at 35% 30%,
+          rgba(255, 255, 255, 0.08) 0%,
+          rgba(255, 255, 255, 0.02) 40%,
+          transparent 70%
+        );
+        border: 1px solid rgba(255, 255, 255, 0.06);
+        box-shadow:
+          inset 0 0 40px rgba(232, 83, 30, 0.15),
+          0 0 60px rgba(232, 83, 30, 0.12),
+          0 0 120px rgba(232, 83, 30, 0.06);
+        z-index: 2;
+        pointer-events: none;
+      }
+
+      /* Fire image */
+      .fire-image {
+        position: absolute;
+        inset: 15px;
+        border-radius: 50%;
+        overflow: hidden;
+        z-index: 1;
+      }
+      .fire-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 50%;
+      }
+
+      /* Video container (hidden initially) */
+      .video-container {
+        position: absolute;
+        inset: 0;
+        border-radius: 50%;
+        overflow: hidden;
+        z-index: 3;
+        opacity: 0;
+        transition: opacity 0.6s ease;
+        pointer-events: none;
+      }
+      .video-container.active {
+        opacity: 1;
+        pointer-events: auto;
+      }
+      .video-container video {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      /* Ambient glow behind orb */
+      .orb-glow {
+        position: absolute;
+        inset: -30px;
+        border-radius: 50%;
+        background: radial-gradient(
+          circle,
+          rgba(232, 83, 30, 0.18) 0%,
+          transparent 70%
+        );
+        z-index: 0;
+        animation: glowBreath 3s ease-in-out infinite;
+      }
+      @keyframes glowBreath {
+        0%,
+        100% {
+          opacity: 0.6;
+          transform: scale(1);
+        }
+        50% {
+          opacity: 1;
+          transform: scale(1.08);
+        }
+      }
+
+      /* ── Text Elements ── */
+      .tap-text {
+        margin-top: 32px;
+        font-family: "Rajdhani", sans-serif;
+        font-weight: 400;
+        font-size: 20px;
+        letter-spacing: 6px;
+        color: var(--text-light);
+        text-transform: lowercase;
+        transition: all 0.4s ease;
+      }
+
+      .tagline {
+        margin-top: 10px;
+        font-family: "Outfit", sans-serif;
+        font-weight: 300;
+        font-size: 13px;
+        letter-spacing: 1.5px;
+        color: var(--text-dim);
+        transition: all 0.4s ease;
+      }
+
+      /* ── Loading State ── */
+      .loading-ring {
+        position: absolute;
+        inset: -6px;
+        border-radius: 50%;
+        border: 2px solid transparent;
+        border-top-color: var(--ember);
+        border-right-color: var(--fire-gold);
+        z-index: 5;
+        opacity: 0;
+        animation: none;
+        pointer-events: none;
+      }
+      .loading-ring.active {
+        opacity: 1;
+        animation: spin 1s linear infinite;
+      }
+      @keyframes spin {
+        to {
+          transform: rotate(360deg);
+        }
+      }
+
+      /* ── Connected state ── */
+      .widget-card.connected .orb-glow {
+        animation: glowBreathActive 2s ease-in-out infinite;
+      }
+      @keyframes glowBreathActive {
+        0%,
+        100% {
+          opacity: 0.7;
+          transform: scale(1);
+        }
+        50% {
+          opacity: 1;
+          transform: scale(1.12);
+        }
+      }
+
+      /* ── Audio Visualizer Ring ── */
+      .audio-ring {
+        position: absolute;
+        inset: -12px;
+        border-radius: 50%;
+        z-index: 4;
+        pointer-events: none;
+        opacity: 0;
+        transition: opacity 0.5s ease;
+      }
+      .audio-ring.active {
+        opacity: 1;
+      }
+      .audio-ring canvas {
+        width: 100%;
+        height: 100%;
+      }
+
+      /* ── End call button ── */
+      .end-call-btn {
+        position: absolute;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: rgba(229, 57, 53, 0.15);
+        border: 1px solid rgba(229, 57, 53, 0.3);
+        color: #e53935;
+        font-family: "Rajdhani", sans-serif;
+        font-weight: 500;
+        font-size: 12px;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        padding: 8px 24px;
+        border-radius: 20px;
+        cursor: pointer;
+        opacity: 0;
+        pointer-events: none;
+        transition: all 0.4s ease;
+        z-index: 11;
+      }
+      .end-call-btn.visible {
+        opacity: 1;
+        pointer-events: auto;
+      }
+      .end-call-btn:hover {
+        background: rgba(229, 57, 53, 0.25);
+        box-shadow: 0 0 20px rgba(229, 57, 53, 0.2);
+      }
+
+      /* ── Subtle scan line effect ── */
+      .scanlines {
+        position: absolute;
+        inset: 0;
+        border-radius: 24px;
+        background: repeating-linear-gradient(
+          0deg,
+          transparent,
+          transparent 2px,
+          rgba(0, 0, 0, 0.015) 2px,
+          rgba(0, 0, 0, 0.015) 4px
+        );
+        pointer-events: none;
+        z-index: 9;
+      }
+
+      /* ── Status text ── */
+      .status-text {
+        position: absolute;
+        bottom: 60px;
+        font-family: "Outfit", sans-serif;
+        font-size: 12px;
+        color: var(--text-dim);
+        letter-spacing: 1px;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        z-index: 11;
+      }
+      .status-text.visible {
+        opacity: 1;
+      }
     </style>
 
     <script src="https://cdn.jsdelivr.net/npm/livekit-client@2.9.1/dist/livekit-client.umd.js"></script>
@@ -1119,7 +1481,7 @@
         we could write paragraphs about latency, orchestration, and cost curves.
         or you could just talk to it and know.
       </p>
-      <div class="widget-container reveal">
+      <!-- <div class="widget-container reveal">
         <span class="widget-tag tl">agni v3</span
         ><span class="widget-tag br"><span class="live-dot"></span> live</span>
         <div class="fire-orb-wrap">
@@ -1132,6 +1494,42 @@
         </div>
         <span class="widget-label">tap to talk</span
         ><span class="widget-hint">experience agni &mdash; no signup</span>
+      </div> -->
+
+      <div class="widget-card" id="widgetCard">
+        <span class="version-label">AGNI V3</span>
+
+        <div class="orb-container" id="orbContainer">
+          <div class="orb-glow"></div>
+          <div class="fire-image" id="fireImage">
+            <img
+              src="https://storage.googleapis.com/msgsndr/LK2LrQP5tkIZ3ahmumnr/media/698928520708e4d8649f0642.png"
+              alt="Agni Fire"
+              crossorigin="anonymous"
+            />
+          </div>
+          <div class="video-container" id="videoContainer">
+            <video id="agentVideo" playsinline muted loop></video>
+          </div>
+          <div class="orb-shell"></div>
+          <div class="loading-ring" id="loadingRing"></div>
+          <div class="audio-ring" id="audioRing">
+            <canvas id="audioCanvas"></canvas>
+          </div>
+        </div>
+
+        <div class="tap-text" id="tapText">tap to talk</div>
+        <div class="tagline" id="tagline">experience agni — no signup</div>
+
+        <span class="status-text" id="statusText"></span>
+        <button class="end-call-btn" id="endCallBtn">End Call</button>
+
+        <div class="live-badge" id="liveBadge">
+          <span class="live-dot"></span>
+          LIVE
+        </div>
+
+        <div class="scanlines"></div>
       </div>
     </section>
 
@@ -1609,73 +2007,6 @@
           statusText.textContent = msg;
           statusText.classList.toggle("visible", !!msg);
         }
-
-        // ── Ember background particles ──
-        function initEmbers() {
-          const canvas = document.getElementById("emberCanvas");
-          const ctx = canvas.getContext("2d");
-          let particles = [];
-
-          function resize() {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-          }
-          resize();
-          window.addEventListener("resize", resize);
-
-          class Ember {
-            constructor() {
-              this.reset();
-            }
-            reset() {
-              this.x = Math.random() * canvas.width;
-              this.y = canvas.height + 10;
-              this.size = Math.random() * 2.5 + 0.5;
-              this.speedY = -(Math.random() * 0.6 + 0.2);
-              this.speedX = (Math.random() - 0.5) * 0.3;
-              this.opacity = Math.random() * 0.5 + 0.2;
-              this.life = Math.random() * 200 + 100;
-              this.age = 0;
-              const colors = ["#e8531e", "#f5a623", "#ff6b35", "#d4421a"];
-              this.color = colors[Math.floor(Math.random() * colors.length)];
-            }
-            update() {
-              this.x += this.speedX + Math.sin(this.age * 0.02) * 0.2;
-              this.y += this.speedY;
-              this.age++;
-              this.opacity = Math.max(0, this.opacity - 0.001);
-              if (this.age > this.life || this.y < -10) this.reset();
-            }
-            draw() {
-              ctx.save();
-              ctx.globalAlpha = this.opacity;
-              ctx.fillStyle = this.color;
-              ctx.shadowColor = this.color;
-              ctx.shadowBlur = this.size * 3;
-              ctx.beginPath();
-              ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-              ctx.fill();
-              ctx.restore();
-            }
-          }
-
-          for (let i = 0; i < 40; i++) {
-            const e = new Ember();
-            e.y = Math.random() * canvas.height;
-            particles.push(e);
-          }
-
-          function loop() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            particles.forEach((p) => {
-              p.update();
-              p.draw();
-            });
-            requestAnimationFrame(loop);
-          }
-          loop();
-        }
-        initEmbers();
 
         // ── Audio visualizer ring ──
         function initAudioVisualizer(audioTrack) {
