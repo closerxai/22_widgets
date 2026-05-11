@@ -6,7 +6,7 @@ import "./Card.css";
 interface CardProps {
   card: CardInterface;
   isActive: boolean;
-  handleStart: (agent_code: string, schema_name?: string) => void;
+ handleStart: (card: CardInterface) => void; // Changed from (agent_code: string, schema_name?: string) => void
   handleEnd: () => void;
   getAgentName: (agentName: string) => void;
   onAgentSelect?: (agent: CardInterface) => void;
@@ -53,18 +53,17 @@ export const Card: React.FC<CardProps> = ({
         </div>
         <p className="card-description">{card.description}</p>
         <button
-          className="try-demo-button"
-          onClick={(e) => {
-            e.preventDefault(); // Prevent default scroll behavior
-            e.stopPropagation(); // Stop bubbling to card or parent scroll container
-
-            handleStart(card.agent_code, card.schema_name);
-            getAgentName(card.title);
-          }}
-        >
-          <Mic size={16} />
-          Try Demo
-        </button>
+  className="try-demo-button"
+  onClick={(e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    handleStart(card); // Pass entire card object
+    getAgentName(card.title);
+  }}
+>
+  <Mic size={16} />
+  Try Demo
+</button>
       </div>
     </div>
   );

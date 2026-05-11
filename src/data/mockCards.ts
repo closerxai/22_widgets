@@ -29,6 +29,49 @@ import {
 // No longer need SERVICE_CATEGORIES constant as we use type-safe strings
 
 export const mockCards: CardInterface[] = [
+ // ============================================
+// NEW RAVAN PROVIDER CARDS
+// ============================================
+{
+  id: 26,
+  title: "VIP Guest Concierge",
+  route: "vip-concierge",
+  description: "Premium concierge for VIP guests",
+  imageUrl: "#8B5CF6",
+  icon: Star,
+  tags: ["VIP", "Concierge"],
+  agent_id: "019e1780-4851-7fed-bb6b-904134322776",
+  from_phone_number: "",
+  to_phone_number: "",
+  metadata: {},
+  prompt_dynamic_variables: {},
+  provider: "ravan",
+  category: "in-stay",
+},
+{
+  id: 27,
+  title: "Event Coordinator",
+  route: "event-coordinator",
+  description: "Manage weddings, conferences & private events",
+  imageUrl: "#EC4899",
+  icon: UsersRound,
+  tags: ["Events", "Coordination"],
+  agent_id: "019e1780-4851-7fed-bb6b-904134322777",
+  provider: "ravan",
+  category: "back-office",
+},
+{
+  id: 28,
+  title: "Multilingual Support",
+  route: "multilingual-support",
+  description: "24/7 support in 50+ languages",
+  imageUrl: "#14B8A6",
+  icon: MessageSquare,
+  tags: ["Support", "Languages"],
+  agent_id: "019e1780-4851-7fed-bb6b-904134322778",
+  provider: "ravan",
+  category: "arrival",
+},
   // ============================================
   // PRE-ARRIVAL SERVICES
   // ============================================
@@ -42,7 +85,7 @@ export const mockCards: CardInterface[] = [
     tags: ["Reservations", "Booking"],
     // agent_code: "b1638df3-d06a-42cf-b1d3-a3191fcc2ad3",
     agent_code: "aff61cd5-1567-4020-8ce7-f270f3693dea",
-    schema_name: "09483b13-47ac-47b2-95cf-4ca89b3debfa",
+    schema_name: "09483b13-47ac-47b2-95cf-",
     category: "pre-arrival",
   },
   /*
