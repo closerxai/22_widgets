@@ -61,22 +61,17 @@ const RealEstateAgentVoice: React.FC<RealEstateAgentVoiceProps> = ({
     }
 
     const rect = anchorElement.getBoundingClientRect();
-    const viewportHeight = window.innerHeight;
-
-    // If card is in lower half of screen → place above it
-    // If card is in upper half → place below it
-    const spaceBelow = viewportHeight - rect.bottom;
-    const shouldPlaceAbove = spaceBelow < 120; // not enough space below
-
     return {
       position: "fixed",
       left: rect.left + rect.width / 2,
-      [shouldPlaceAbove ? "bottom" : "top"]: shouldPlaceAbove
-        ? viewportHeight - rect.top + 12
-        : rect.bottom + 12,
+      top: rect.bottom + 12,
       transform: "translateX(-50%)",
       zIndex: 50,
     };
+
+    // If card is in lower half of screen → place above it
+    // If card is in upper half → place below it
+
   };
 
   return (

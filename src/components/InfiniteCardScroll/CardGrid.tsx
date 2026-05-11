@@ -14,7 +14,11 @@ import "./CardGrid.css";
 interface CardGridProps {
   cards: CardInterface[];
   className?: string;
-  handleStart: (agent_code: string, schema_name?: string) => void;
+  handleStart: (
+    agent_code: string,
+    schema_name?: string,
+    voice_provider?: CardInterface["voice_provider"],
+  ) => void;
   handleEnd: () => void;
   showRealEstateAgentVoice?: boolean;
   sessionStatus?: string | undefined | null;

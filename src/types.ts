@@ -1,6 +1,7 @@
 import { DivideIcon as LucideIcon } from 'lucide-react';
 
 export type Category =
+  | "reservation-agent"
   | "pre-arrival"
   | "arrival"
   | "in-stay"
@@ -19,5 +20,7 @@ export interface CardInterface {
   link?: string;
   agent_code: string;
   schema_name?: string;
+  voice_provider?: "snowie" | "ravan";
   category?: Category;
+  imageAlt?: string;
 }

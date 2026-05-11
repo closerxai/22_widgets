@@ -6,7 +6,11 @@ import "./Card.css";
 interface CardProps {
   card: CardInterface;
   isActive: boolean;
-  handleStart: (agent_code: string, schema_name?: string) => void;
+  handleStart: (
+    agent_code: string,
+    schema_name?: string,
+    voice_provider?: CardInterface["voice_provider"],
+  ) => void;
   handleEnd: () => void;
   getAgentName: (agentName: string) => void;
   onAgentSelect?: (agent: CardInterface) => void;
@@ -58,7 +62,7 @@ export const Card: React.FC<CardProps> = ({
             e.preventDefault(); // Prevent default scroll behavior
             e.stopPropagation(); // Stop bubbling to card or parent scroll container
 
-            handleStart(card.agent_code, card.schema_name);
+            handleStart(card.agent_code, card.schema_name, card.voice_provider);
             getAgentName(card.title);
           }}
         >

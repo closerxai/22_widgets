@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Voice Widget</title>
+
+    <script src="https://cdn.jsdelivr.net/npm/livekit-client/dist/livekit-client.umd.min.js"></script>
+
+    <style>
+        body {
+            background: #111;
+            color: white;
+            font-family: Arial;
+            padding: 40px;
+        }
+
+        button {
+            padding: 12px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        #status {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h2>🎤 Ravan AI Call</h2>
+
+    <button onclick="startCall()">
+        Start Call
+    </button>
+
+    <div id="status">
+        Idle
+    </div>
+
+    <script>
+
+        let room;
+
+        async function startCall() {
+
+            try {
+
+                document.getElementById("status").innerText =
+                    "Creating call...";
+
+                // CREATE CALL
+                const response = await fetch(
+                    "https://api.ravan.ai/api/v1/calling/create-call",
+                    {
+                        method: "POST",
+
+                        headers: {
+                            "Content-Type": "application/json",
+
+                            "X-Api-Key":
+                                "ak_6ea7ada5d09c5a6d75cd73f1ca7ed0b2a74f592a3ca4a2faa441f80fa8b16c29"
+                        },
+
+                        body: JSON.stringify({
+                            type: "web_call",
+
+                            agent_id:
+                                "019e1780-4851-7fed-bb6b-904134322776",
+
+                            metadata: {},
+
+                            prompt_dynamic_variables: {}
+                        })
+                    }
+                );
+
+                const result = await response.json();
+
+                console.log(result);
+
+                const token = result.data.access_token;
+
+                const wsUrl = result.data.url;
+
+                document.getElementById("status").innerText =
+                    "Connecting...";
+
+                // IMPORTANT FIX
+                room = new window.LivekitClient.Room();
+
+                room.on(
+                    window.LivekitClient.RoomEvent.TrackSubscribed,
+                    (track) => {
+
+                        console.log("track", track);
+
+                        if (track.kind === "audio") {
+
+                            const audio = track.attach();
+
+                            audio.autoplay = true;
+
+                            document.body.appendChild(audio);
+                        }
+                    }
+                );
+
+                // CONNECT
+                await room.connect(wsUrl, token);
+
+                // ENABLE MIC
+                await room.localParticipant.setMicrophoneEnabled(true);
+
+                document.getElementById("status").innerText =
+                    "✅ Connected";
+
+            } catch (err) {
+
+                console.error(err);
+
+                document.getElementById("status").innerText =
+                    "❌ " + err.message;
+            }
+        }
+
+    </script>
+
+</body>
+
+</html>
