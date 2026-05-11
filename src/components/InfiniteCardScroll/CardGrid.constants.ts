@@ -13,7 +13,7 @@ export interface CategoryConfig {
 
 export const categoryConfig = {
   "reservation-agent": {
-    label: "Reservation Agent",
+    label: "Top Performing Agents",
     color: "#E11D48",
     gradient: "linear-gradient(135deg, #E11D48 0%, #FB7185 100%)",
     lightBg: "rgba(225, 29, 72, 0.08)",
