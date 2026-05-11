@@ -1,4 +1,4 @@
-import { Plane, LogIn, Home, LogOut, Star, Briefcase } from "lucide-react";
+import { PhoneCall, Plane, LogIn, Home, LogOut, Star, Briefcase } from "lucide-react";
 import React from "react";
 import type { Category } from "../../types";
 
@@ -12,6 +12,14 @@ export interface CategoryConfig {
 }
 
 export const categoryConfig = {
+  "reservation-agent": {
+    label: "Reservation Agent",
+    color: "#E11D48",
+    gradient: "linear-gradient(135deg, #E11D48 0%, #FB7185 100%)",
+    lightBg: "rgba(225, 29, 72, 0.08)",
+    icon: PhoneCall,
+    description: "Ravan AI voice agents",
+  },
   "pre-arrival": {
     label: "Pre-Arrival",
     color: "#FF6B35",
@@ -63,6 +71,7 @@ export const categoryConfig = {
 } as const;
 
 export const categoryOrder: Category[] = [
+  "reservation-agent",
   "pre-arrival",
   "arrival",
   "in-stay",

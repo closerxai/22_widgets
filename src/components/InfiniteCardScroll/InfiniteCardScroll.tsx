@@ -8,7 +8,11 @@ interface InfiniteCardScrollProps {
   cards: CardInterface[];
   className?: string;
   pauseDuration?: number;
-  handleStart: (agent_code: string) => void;
+  handleStart: (
+    agent_code: string,
+    schema_name?: string,
+    voice_provider?: CardInterface["voice_provider"],
+  ) => void;
   handleEnd: () => void;
   stopScrolls?: boolean;
   resumeScrolls?: boolean;

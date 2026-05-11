@@ -30,6 +30,70 @@ import {
 
 export const mockCards: CardInterface[] = [
   // ============================================
+  // RESERVATION AGENT SERVICES (RAVAN)
+  // ============================================
+  {
+    id: "ravan-outbound-pre-arrival",
+    title: "Outbound AI Pre-Arrival",
+    route: "outbound-ai-pre-arrival",
+    description: "Pre-arrival outreach and guest readiness calls",
+    imageUrl: "#E11D48",
+    icon: Megaphone,
+    tags: ["Ravan", "Pre-Arrival"],
+    agent_code: "019e1780-4851-7fed-bb6b-904134322776",
+    voice_provider: "ravan",
+    category: "reservation-agent",
+  },
+  {
+    id: "ravan-guest-services-concierge",
+    title: "Guest Services Concierge",
+    route: "guest-services-concierge",
+    description: "Concierge assistance for guest questions and service needs",
+    imageUrl: "#E11D48",
+    icon: ConciergeBell,
+    tags: ["Ravan", "Concierge"],
+    agent_code: "019e177d-2ff3-75d2-a42c-7b7dbcc295a9",
+    voice_provider: "ravan",
+    category: "reservation-agent",
+  },
+  {
+    id: "ravan-travel-agent",
+    title: "Travel Agent",
+    route: "travel-agent",
+    description: "Travel planning, local recommendations, and trip support",
+    imageUrl: "#E11D48",
+    icon: Plane,
+    tags: ["Ravan", "Travel"],
+    agent_code: "019e177b-619f-7056-9688-ee5d9b4d3392",
+    voice_provider: "ravan",
+    category: "reservation-agent",
+  },
+  {
+    id: "ravan-food-and-beverage",
+    title: "Food & Beverage",
+    route: "food-and-beverage",
+    description: "Dining questions, food orders, and beverage assistance",
+    imageUrl: "#E11D48",
+    icon: Utensils,
+    tags: ["Ravan", "F&B"],
+    agent_code: "019e1778-2da6-735b-a7f3-340d6dcfafb4",
+    voice_provider: "ravan",
+    category: "reservation-agent",
+  },
+  {
+    id: "ravan-reservation-agent",
+    title: "Reservation Agent",
+    route: "reservation-agent",
+    description: "Reservation calls, booking questions, and availability support",
+    imageUrl: "#E11D48",
+    icon: Phone,
+    tags: ["Ravan", "Reservations"],
+    agent_code: "019e1777-1770-769e-8ef4-9df9091b9f70",
+    voice_provider: "ravan",
+    category: "reservation-agent",
+  },
+
+  // ============================================
   // PRE-ARRIVAL SERVICES
   // ============================================
   {

@@ -7,7 +7,11 @@ import './AgentDetail.css';
 interface AgentDetailProps {
   agent: CardInterface;
   onBack: () => void;
-  handleStart: (agent_code: string, schema_name?: string) => void;
+  handleStart: (
+    agent_code: string,
+    schema_name?: string,
+    voice_provider?: CardInterface["voice_provider"],
+  ) => void;
   handleEnd: () => void;
   getAgentName: (agentName: string) => void;
 }
@@ -589,7 +593,7 @@ export const AgentDetail: React.FC<AgentDetailProps> = ({
   const handleTryDemo = (e: React.MouseEvent) => {
     e.preventDefault();
     e.stopPropagation();
-    handleStart(agent.agent_code, agent.schema_name);
+    handleStart(agent.agent_code, agent.schema_name, agent.voice_provider);
     getAgentName(agent.title);
   };
 
